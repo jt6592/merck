@@ -1,0 +1,376 @@
+<head>
+  <link href="https://vjs.zencdn.net/7.8.4/video-js.css" rel="stylesheet" />
+
+  <!-- If you'd like to support IE8 (for Video.js versions prior to v7) -->
+  <script src="https://vjs.zencdn.net/ie8/1.1.2/videojs-ie8.min.js"></script>
+  <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+</head>
+
+<style>
+	.box{
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;		
+	}
+
+	.btn-group {
+		max-width: 600px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		position:relative;
+		z-index: 99;
+	}
+
+	video {
+		display: absolute;
+		top: 0;
+    	left: 0;
+	}
+
+</style>
+
+<body>
+	<main class="box">
+		<!-- vjs-16-9 -->
+			<video
+				id="main_video"
+				class="video-js vjs-default-skin vjs-big-play-centered"
+				 controls
+				autoplay
+	
+				preload="auto"
+				width="1060"
+				height="600"
+					
+				data-setup="{}"
+			>
+				<source src="./MAIN_VIDEO.mp4" type="video/mp4" />
+				
+				<p class="vjs-no-js">
+				To view this video please enable JavaScript, and consider upgrading to a
+				web browser that
+				<a href="https://videojs.com/html5-video-support/" target="_blank"
+					>supports HTML5 video</a
+				>
+				</p>
+				
+			</video>			
+		
+	  
+			<!-- 選擇1 -->
+				
+			<div id="conatinerA" style="display:none;">
+				<video
+				id="a_video"
+				class="video-js"
+				 
+				autoplay
+				preload="auto"
+				width="1060"
+				height="600"
+				vjs-16-9	
+				data-setup="{}"
+				>
+				<source src="./A_VIDEO.mp4" type="video/mp4" />
+				
+				<p class="vjs-no-js">
+					To view this video please enable JavaScript, and consider upgrading to a
+					web browser that
+					<a href="https://videojs.com/html5-video-support/" target="_blank"
+					>supports HTML5 video</a
+					>
+				</p>
+				</video>
+			</div>	  
+			<div id="conatinerB" style="display:none;">
+					<video
+					id="b_video"
+					class="video-js"
+					 
+					autoplay
+					preload="auto"
+					width="1060"
+					height="600"
+					vjs-16-9	
+					data-setup="{}"
+					>
+					<source src="B_VIDEO.mp4" type="video/mp4" />
+					
+					<p class="vjs-no-js">
+						To view this video please enable JavaScript, and consider upgrading to a
+						web browser that
+						<a href="https://videojs.com/html5-video-support/" target="_blank"
+						>supports HTML5 video</a
+						>
+					</p>
+					</video>	
+			</div>
+
+			<div class="btn-group  ">
+				<button class="hover:bg-red-400 border-2 border-white rounded-xl px-20 py-10 bg-gray-400 z-10 text-white font-bold text-3xl transparent" id="btnA" onclick="playA()" style="display:none;">A. Project Atum</button>
+				<button class="hover:bg-red-400 border-2 border-white rounded-xl px-20 py-10 bg-gray-400 z-10 text-white font-bold text-3xl transparent" id="btnB" onclick="playB()" style="display:none;">B. Project Thoth</button>
+			</div>	
+
+
+		<!-- 選擇2 -->
+		<!-- 2-A -->
+		<div id="conatinerAA" style="display:none;">
+			<video
+				id="aa_video"
+				class="video-js"
+				 
+				autoplay
+				preload="auto"
+				width="1060"
+				height="600"
+				vjs-16-9	
+				data-setup="{}"
+			>
+				<source src="./AA_VIDEO.mp4" type="video/mp4" />
+				
+				<p class="vjs-no-js">
+				To view this video please enable JavaScript, and consider upgrading to a
+				web browser that
+				<a href="https://videojs.com/html5-video-support/" target="_blank"
+					>supports HTML5 video</a
+				>
+				</p>
+			</video>
+		</div>	  
+
+
+		<div id="conatinerAB" style="display:none;">
+			<video
+			id="ab_video"
+			class="video-js"
+			 
+			autoplay
+			preload="auto"
+			width="1060"
+			height="600"
+			vjs-16-9	
+			data-setup="{}"
+		>
+			<source src="./AB_VIDEO.mp4" type="video/mp4" />
+			
+			<p class="vjs-no-js">
+			To view this video please enable JavaScript, and consider upgrading to a
+			web browser that
+			<a href="https://videojs.com/html5-video-support/" target="_blank"
+				>supports HTML5 video</a
+			>
+			</p>
+		</video>		
+		</div>
+		<div class="btn-group  ">
+			<button class="hover:bg-red-400 border-2 border-white rounded-xl px-20 py-10 bg-gray-400 z-10 text-white font-bold text-3xl transparent" id="btnAA" onclick="playAA()" style="display:none;">A. Smart Healthcare </button>
+			<button class="hover:bg-red-400 border-2 border-white rounded-xl px-20 py-10 bg-gray-400 z-10 text-white font-bold text-3xl transparent" id="btnAB" onclick="playAB()" style="display:none;">B. Smart Mobility</button>
+		</div>
+
+		<!-- 2-B -->
+		<div id="conatinerBA" style="display:none;">
+			<video
+			id="ba_video"
+			class="video-js"
+			 
+			autoplay
+			preload="auto"
+			width="1060"
+			height="600"
+			vjs-16-9	
+			data-setup="{}"
+		>
+			<source src="./BA_VIDEO.mp4" type="video/mp4" />
+			
+			<p class="vjs-no-js">
+			To view this video please enable JavaScript, and consider upgrading to a
+			web browser that
+			<a href="https://videojs.com/html5-video-support/" target="_blank"
+				>supports HTML5 video</a
+			>
+			</p>
+		</video>			
+		</div>
+		<div id="conatinerBB" style="display:none;">
+			<video
+			id="bb_video"
+			class="video-js"
+			 
+			autoplay
+			preload="auto"
+			width="1060"
+			height="600"
+			vjs-16-9	
+			data-setup="{}"
+		>
+			<source src="./BB_VIDEO.mp4" type="video/mp4" />
+			
+			<p class="vjs-no-js">
+			To view this video please enable JavaScript, and consider upgrading to a
+			web browser that
+			<a href="https://videojs.com/html5-video-support/" target="_blank"
+				>supports HTML5 video</a
+			>
+			</p>
+		</video>		
+		</div>
+		<div class="btn-group  ">
+			<button class="hover:bg-red-400 border-2 border-white rounded-xl px-20 py-10 bg-gray-400 z-10 text-white font-bold text-3xl transparent" id="btnBA" onclick="playBA()" style="display:none;">A. Future Entertainment Technology</button>
+			<button class="hover:bg-red-400 border-2 border-white rounded-xl px-20 py-10 bg-gray-400 z-10 text-white font-bold text-3xl transparent" id="btnBB" onclick="playBB()" style="display:none;">B. Smart Monitoring Technology</button>
+		</div>
+
+		</main>
+  
+  <script src="https://vjs.zencdn.net/7.8.4/video.js"></script>
+  <script>
+		//const
+		const main_video = videojs('main_video');
+		const a_video = videojs('a_video');
+		const b_video = videojs('b_video');
+		const aa_video = videojs('aa_video');
+		const ab_video = videojs('ab_video');
+		const ba_video = videojs('ba_video');
+		const bb_video = videojs('bb_video');
+		
+		const conatinerA = document.getElementById('conatinerA');
+		const conatinerB = document.getElementById('conatinerB');
+		const conatinerAA = document.getElementById('conatinerAA');
+		const conatinerAB = document.getElementById('conatinerAB');
+		const conatinerBA = document.getElementById('conatinerBA');
+		const conatinerBB = document.getElementById('conatinerBB');
+		
+  		const btnA = document.getElementById('btnA');
+		const btnB = document.getElementById('btnB');
+  		const btnAA = document.getElementById('btnAA');
+		const btnAB = document.getElementById('btnAB');		
+		const btnBA = document.getElementById('btnBA');
+		const btnBB = document.getElementById('btnBB');
+
+		function myfun(obj, btn1, btn2) {
+			// console.log("myPlayer.currentTime()", main_video.currentTime());
+			if( obj.duration() - obj.currentTime() < 8 ){
+				console.log(obj.duration() - obj.currentTime())
+				btn1.style.display = "block";
+				btn2.style.display = "block";
+			}
+		}
+
+		//main video
+		// main_video.on('play', () => main_video.autoplay(true))
+		main_video.on('play', () =>  main_video.controls(false));
+		main_video.on("timeupdate", function(){
+			myfun(main_video, btnA, btnB);
+		});
+		main_video.on('ended', function() {
+				playA();
+			}		
+		)
+
+		//A video
+		function playA() {
+			video = document.getElementById('a_video');
+			main_video.off();
+			main_video.muted(true);
+			this.main_video.style.display = "none";
+			this.btnA.style.display = "none";
+			this.btnB.style.display = "none";	
+			
+			conatinerA.style.display = "block";
+			a_video.play();
+			a_video.on("timeupdate", function(){
+				myfun(a_video, btnAA, btnAB);
+			});
+			a_video.on('ended', function() {
+					playAA();
+				}		
+			)
+		}			
+		
+		//B video
+		function playB() {
+			video = document.getElementById('b_video');
+			main_video.off();
+			main_video.muted(true);
+			this.main_video.style.display = "none";
+			this.btnA.style.display = "none";
+			this.btnB.style.display = "none";
+			
+			conatinerB.style.display = "block";
+			b_video.play();			
+			b_video.on("timeupdate", function(){
+				myfun(b_video, btnBA, btnBB);
+			});
+			b_video.on('ended', function() {
+					playBA();
+				}		
+			)				  
+		}		
+		
+		//AA vedio
+		function playAA() {
+			video = document.getElementById('aa_video');
+			a_video.off();
+			a_video.muted(true);
+
+			this.a_video.style.display = "none";
+			this.btnAA.style.display = "none";
+			this.btnAB.style.display = "none";
+			
+			conatinerAA.style.display = "block";
+			aa_video.play();			
+			// aa_video.on('play', () => aa_video.controls(false))	  
+		}
+		
+		//AB vedio
+		function playAB() {
+			video = document.getElementById('ab_video');
+			a_video.off();
+			a_video.muted(true);
+
+			this.a_video.style.display = "none";
+			this.btnAA.style.display = "none";
+			this.btnAB.style.display = "none";
+			
+			conatinerAB.style.display = "block";
+			ab_video.play();			
+		}		
+
+		//BA vedio
+		function playBA() {
+			video = document.getElementById('ba_video');
+			b_video.off();
+			b_video.muted(true);
+
+			this.b_video.style.display = "none";
+			this.btnBA.style.display = "none";
+			this.btnBB.style.display = "none";
+			
+			conatinerBA.style.display = "block";
+			ba_video.play();			  
+		}
+
+		//BB vedio
+		function playBB() {
+			video = document.getElementById('bb_video');
+			b_video.off();
+			b_video.muted(true);
+
+			this.b_video.style.display = "none";
+			this.btnBA.style.display = "none";
+			this.btnBB.style.display = "none";
+			
+			conatinerBB.style.display = "block";
+			bb_video.play();			 
+		}	
+
+
+		//test volumn reduce
+		// var defaultVolume = 1;
+		// 	videojs('main_video', {}, function() {
+		// 	this.volume(defaultVolume*0.5);
+		// });
+
+  </script>
+</body>
