@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width">
-  <title>JS Bin</title>
-
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Video</title>
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
   <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
 </head>
 
@@ -99,6 +99,15 @@ https://youtu.be/vK3SPRU8AeQ
     var ba_video;
     var bb_video;
 
+
+    var clickedA = false;
+    var clickedB = false;
+    var clickedAA = false;
+    var clickedAB = false;
+    var clickedBA = false;
+    var clickedBB = false;
+
+
       var done = false;
 
       var tag = document.createElement('script');
@@ -107,10 +116,9 @@ https://youtu.be/vK3SPRU8AeQ
       firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
       function onYouTubeIframeAPIReady() {
-
         main_video = new YT.Player('MAIN', {
           height: '600px',
-          width: '900px',
+          width: $(window).width(),
           videoId:'1TMY_-9oCDk',
           events: {
             'onReady': onPlayerReady,
@@ -123,7 +131,7 @@ https://youtu.be/vK3SPRU8AeQ
 
         a_video = new YT.Player('containerA', {
           height: '600px',
-          width: '900px',
+          width: $(window).width(),
           videoId:'_s2dt2QZD_o',
           events: {
             'onReady': onPlayerReady,
@@ -136,7 +144,7 @@ https://youtu.be/vK3SPRU8AeQ
 
         b_video = new YT.Player('containerB', {
           height: '600px',
-          width: '900px',
+          width: $(window).width(),
           videoId:'4x5a1qOg0uU',
           events: {
             'onReady': onPlayerReady,
@@ -149,7 +157,7 @@ https://youtu.be/vK3SPRU8AeQ
 
         aa_video = new YT.Player('containerAA', {
           height: '600px',
-          width: '900px',
+          width: $(window).width(),
           videoId:'CqXA6HoIf4I',
           events: {
             'onReady': onPlayerReady,
@@ -162,7 +170,7 @@ https://youtu.be/vK3SPRU8AeQ
 
         ab_video = new YT.Player('containerAB', {
           height: '600px',
-          width: '900px',
+          width: $(window).width(),
           videoId:'4iphST-Ff6k',
           events: {
             'onReady': onPlayerReady,
@@ -175,7 +183,7 @@ https://youtu.be/vK3SPRU8AeQ
 
         ba_video = new YT.Player('containerBA', {
           height: '600px',
-          width: '900px',
+          width: $(window).width(),
           videoId:'4oZsfBEuTYo',
           events: {
             'onReady': onPlayerReady,
@@ -188,7 +196,7 @@ https://youtu.be/vK3SPRU8AeQ
 
         bb_video = new YT.Player('containerBB', {
           height: '600px',
-          width: '900px',
+          width: $(window).width(),
           videoId:'vK3SPRU8AeQ',
           events: {
             'onReady': onPlayerReady,
@@ -202,30 +210,48 @@ https://youtu.be/vK3SPRU8AeQ
       }
 
 
-
-      // function onPlayerReady_m(event) {
-      //   if ( event.target.getCurrentTime() > main_video.getDuration() -10 )
-      //   console.log(main_video.getDuration())
-      // }
-
       function onPlayerReady(event) {
         // event.target.playVideo();
       }
 
       function startInterval( player, btn1, bnt2 ) {
         checkInt = setInterval(function() {
+          console.log("startInterval")
           console.log(player.getCurrentTime())
-            if (player.getCurrentTime() >= player.getDuration() -10 && player.getCurrentTime() < player.getDuration() ) {
+            if (player.getCurrentTime() >= player.getDuration()-20 && player.getCurrentTime() < player.getDuration()-1 && !clickedA && !clickedB) {
               showBtn( btn1, bnt2 );
               clearInterval(checkInt);
             };
         }, 1000)
       }
 
+      function startInterval2( player, btn1, bnt2 ) {
+        checkInt = setInterval(function() {
+          console.log("startInterval2")
+          console.log(player.getCurrentTime())
+            if (player.getCurrentTime() >= player.getDuration()-20 && player.getCurrentTime() < player.getDuration()-1 && !clickedAA && !clickedAB ) {
+              showBtn( btn1, bnt2 );
+              clearInterval(checkInt);
+            };
+        }, 1000)
+      }
+
+      function startInterval3( player, btn1, bnt2 ) {
+        checkInt = setInterval(function() {
+          console.log("startInterval3")
+          console.log(player.getCurrentTime())
+            if (player.getCurrentTime() >= player.getDuration()-20 && player.getCurrentTime() < player.getDuration()-1 && !clickedBA && !clickedBB) {
+              showBtn( btn1, bnt2 );
+              clearInterval(checkInt);
+            };
+        }, 1000)
+      }      
+
+
 // onPlayerStateChange ============================================
       function onPlayerStateChange_m(event) {
-        if (event.data == YT.PlayerState.PLAYING && !done) {
-          startInterval( event.target, btnA, btnB  );
+        if (event.data == YT.PlayerState.PLAYING ) {
+          startInterval( event.target, btnA, btnB );
           
         }
 
@@ -238,8 +264,8 @@ https://youtu.be/vK3SPRU8AeQ
       }
 
       function onPlayerStateChange_a(event) {
-        if (event.data == YT.PlayerState.PLAYING && !done) {
-          startInterval( event.target, btnAA, btnAB  );
+        if (event.data == YT.PlayerState.PLAYING ) {
+          startInterval2( event.target, btnAA, btnAB  );
 
         }
 
@@ -252,8 +278,8 @@ https://youtu.be/vK3SPRU8AeQ
       }
 
       function onPlayerStateChange_b(event) {
-        if (event.data == YT.PlayerState.PLAYING && !done) {
-          startInterval( event.target, btnBA, btnBB  );
+        if (event.data == YT.PlayerState.PLAYING ) {
+          startInterval3( event.target, btnBA, btnBB );
 
         }
 
@@ -270,12 +296,12 @@ https://youtu.be/vK3SPRU8AeQ
       function showBtn(btn1, btn2) {
 				btn1.style.display = "block";
 				btn2.style.display = "block";
-        done = true;
+        // done = true;
       }
       function hideBtn(btn1, btn2) {
         btn1.style.display = "none";
         btn2.style.display = "none";
-        done = false;
+        // done = false;
       }
       function showContainer(container) {
         container.style.display = "block"
@@ -290,42 +316,61 @@ https://youtu.be/vK3SPRU8AeQ
 // click============================================
       function clickA(){
           hideBtn( btnA, btnB );
-          main_video.destroy();    
+          main_video.destroy();
+          main_video.setInterval   
           hideContainer( window.MAIN );
           showContainer( window.containerA );
-          // containerA.
+          a_video.playVideo();
+          clickedA = true;
+          clickedB = true;
       }
       function clickB(){
           hideBtn( btnA, btnB );
           main_video.destroy();  
           hideContainer( window.MAIN );
           showContainer( window.containerB );
+          b_video.playVideo();
+          clickedA = true;
+          clickedB = true;
       }
       function clickAA(){
           hideBtn( btnAA, btnAB );
           a_video.destroy();  
           hideContainer( window.containerA );
           showContainer( window.containerAA );
+          aa_video.playVideo();
+          clickedAA = true;
+          clickedAB = true;
       }
       function clickAB(){
           hideBtn( btnAA, btnAB );
           a_video.destroy();  
           hideContainer( window.containerA );
           showContainer( window.containerAB );
+          ab_video.playVideo();
+          clickedAA = true;
+          clickedAB = true;
       }
       function clickBA(){
           hideBtn( btnBA, btnBB );
           b_video.destroy();    
           hideContainer( window.containerB );
           showContainer( window.containerBA );
+          ba_video.playVideo();
+          clickedBA = true;
+          clickedBB = true;
       }
       function clickBB(){
           hideBtn( btnBA, btnBB );
           b_video.destroy();
           hideContainer( window.containerB );
           showContainer( window.containerBB );
-              
+          bb_video.playVideo(); 
+          clickedBA = true;
+          clickedBB = true;  
       }
     </script>
+
+
 </body>
 </html>
