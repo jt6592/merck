@@ -26,10 +26,10 @@ AB
 https://youtu.be/4iphST-Ff6k
 
 BA
-https://youtu.be/4oZsfBEuTYo
+https://youtu.be/vK3SPRU8AeQ
 
 BB
-https://youtu.be/vK3SPRU8AeQ
+https://youtu.be/4oZsfBEuTYo
  -->
 <style>
 	.box{
@@ -46,8 +46,19 @@ https://youtu.be/vK3SPRU8AeQ
 		position:absolute;
 		z-index: 99;
 		margin-top: 330px;
-		
 	}
+
+  @media (max-width: 640px){
+      .btn-group {
+      max-width: 900px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position:absolute;
+      z-index: 99;
+      margin-top: 250px;
+    }
+  }
 </style>
 
 <body>
@@ -61,17 +72,17 @@ https://youtu.be/vK3SPRU8AeQ
     <div id="containerBA" style="display:none;"></div>
     <div id="containerBB" style="display:none;"></div>
 
-    <div class="btn-group ">
-      <button OnClick="clickA()" class="hover:bg-red-400 bg-opacity-25 border-2 border-white rounded-xl px-20 py-10 bg-gray-400 z-10 text-white font-bold text-xl transparent" id="btnA" style="display:none;">Project Atum</button>
-      <button OnClick="clickB()" class="hover:bg-red-400 bg-opacity-25 border-2 border-white rounded-xl px-20 py-10 bg-gray-400 z-10 text-white font-bold text-xl transparent" id="btnB" style="display:none;">Project Thoth</button>
+    <div class="btn-group">
+      <button OnClick="clickA()" class="hover:bg-red-400 bg-opacity-25 border-2 border-white rounded-xl px-10 py-4 md:px-20 md:py-10 bg-gray-400 z-10 text-white font-bold text-xl transparent" id="btnA" style="display:none;">Project Atum</button>
+      <button OnClick="clickB()" class="hover:bg-red-400 bg-opacity-25 border-2 border-white rounded-xl px-10 py-4 md:px-20 md:py-10 bg-gray-400 z-10 text-white font-bold text-xl transparent" id="btnB" style="display:none;">Project Thoth</button>
     </div>	
     <div class="btn-group  ">
-			<button OnClick="clickAA()" class="hover:bg-red-400 bg-opacity-25 border-2 border-white rounded-xl px-20 py-10 bg-gray-400 z-10 text-white font-bold text-xl transparent" id="btnAA" style="display:none;">Smart Healthcare </button>
-			<button OnClick="clickAB()" class="hover:bg-red-400 bg-opacity-25 border-2 border-white rounded-xl px-20 py-10 bg-gray-400 z-10 text-white font-bold text-xl transparent" id="btnAB" style="display:none;">Smart Mobility</button>
+			<button OnClick="clickAA()" class="hover:bg-red-400 bg-opacity-25 border-2 border-white rounded-xl px-10 py-4 md:px-20 md:py-10 bg-gray-400 z-10 text-white font-bold text-xl transparent" id="btnAA" style="display:none;">Smart Healthcare </button>
+			<button OnClick="clickAB()" class="hover:bg-red-400 bg-opacity-25 border-2 border-white rounded-xl px-10 py-4 md:px-20 md:py-10 bg-gray-400 z-10 text-white font-bold text-xl transparent" id="btnAB" style="display:none;">Smart Mobility</button>
     </div>
     <div class="btn-group  ">
-			<button OnClick="clickBA()" class="hover:bg-red-400 bg-opacity-25 border-2 border-white rounded-xl px-20 py-10 bg-gray-400 z-10 text-white font-bold text-xl transparent" id="btnBA" style="display:none;">Future Entertainment<br>Technology</button>
-			<button OnClick="clickBB()" class="hover:bg-red-400 bg-opacity-25 border-2 border-white rounded-xl px-20 py-10 bg-gray-400 z-10 text-white font-bold text-xl transparent" id="btnBB" style="display:none;">Smart Monitoring<br>Technology</button>
+			<button OnClick="clickBA()" class="hover:bg-red-400 bg-opacity-25 border-2 border-white rounded-xl px-10 py-4 md:px-20 md:py-10 bg-gray-400 z-10 text-white font-bold text-xl transparent" id="btnBA" style="display:none;">Future Entertainment<br>Technology</button>
+			<button OnClick="clickBB()" class="hover:bg-red-400 bg-opacity-25 border-2 border-white rounded-xl px-10 py-4 md:px-20 md:py-10 bg-gray-400 z-10 text-white font-bold text-xl transparent" id="btnBB" style="display:none;">Smart Monitoring<br>Technology</button>
 		</div>
   </div>
 
@@ -190,7 +201,7 @@ https://youtu.be/vK3SPRU8AeQ
         ba_video = new YT.Player('containerBA', {
           height: myHeight,
           width: $(window).width(),
-          videoId:'4oZsfBEuTYo',
+          videoId:'vK3SPRU8AeQ',
           events: {
             'onReady': onPlayerReady,
             // 'onStateChange': onPlayerStateChange_ba,
@@ -203,7 +214,7 @@ https://youtu.be/vK3SPRU8AeQ
         bb_video = new YT.Player('containerBB', {
           height: myHeight,
           width: $(window).width(),
-          videoId:'vK3SPRU8AeQ',
+          videoId:'4oZsfBEuTYo',
           events: {
             'onReady': onPlayerReady,
             // 'onStateChange': onPlayerStateChange_bb,
