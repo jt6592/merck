@@ -1,5 +1,6 @@
 <head>
   <link href="https://vjs.zencdn.net/7.8.4/video-js.css" rel="stylesheet" />
+  <script src="https://vjs.zencdn.net/7.8.4/video.js"></script>
 
   <!-- If you'd like to support IE8 (for Video.js versions prior to v7) -->
   <script src="https://vjs.zencdn.net/ie8/1.1.2/videojs-ie8.min.js"></script>
@@ -250,7 +251,7 @@
 		function myfun(obj, btn1, btn2) {
 			// console.log("myPlayer.currentTime()", main_video.currentTime());
 			if( obj.duration() - obj.currentTime() < 8 ){
-				//console.log(obj.duration() - obj.currentTime())
+				console.log(obj.duration() - obj.currentTime())
 				btn1.style.display = "block";
 				btn2.style.display = "block";
 			}
