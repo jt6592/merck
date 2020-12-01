@@ -1,12 +1,36 @@
+<!DOCTYPE html>
+<html>
 <head>
-  <link href="https://vjs.zencdn.net/7.8.4/video-js.css" rel="stylesheet" />
-  <script src="https://vjs.zencdn.net/7.8.4/video.js"></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>JS Bin</title>
 
-  <!-- If you'd like to support IE8 (for Video.js versions prior to v7) -->
-  <script src="https://vjs.zencdn.net/ie8/1.1.2/videojs-ie8.min.js"></script>
   <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
 </head>
 
+
+<!-- 
+MAIN
+https://youtu.be/1TMY_-9oCDk
+
+A
+https://youtu.be/_s2dt2QZD_o
+
+B
+https://youtu.be/4x5a1qOg0uU
+
+AA
+https://youtu.be/CqXA6HoIf4I
+
+AB
+https://youtu.be/4iphST-Ff6k
+
+BA
+https://youtu.be/4oZsfBEuTYo
+
+BB
+https://youtu.be/vK3SPRU8AeQ
+ -->
 <style>
 	.box{
 		display: flex;
@@ -14,7 +38,6 @@
 		justify-content: center;
 		align-items: center;		
 	}
-
 	.btn-group {
 		max-width: 900px;
 		display: flex;
@@ -25,354 +48,284 @@
 		margin-top: 330px;
 		
 	}
-
-	video {
-		display: absolute;
-		top: 0;
-    	left: 0;
-	}
-
 </style>
 
 <body>
-	<main class="box bg-black">
-		<!-- vjs-16-9 -->
-			<video
-				id="main_video"
-				class="video-js vjs-default-skin vjs-big-play-centered"
-				 controls
-				autoplay
-	
-				preload="auto"
-				width="1060"
-				height="600"
-					
-				data-setup="{}"
-			>
-				<source src="./MAIN_VIDEO.mp4" type="video/mp4" />
-				
-				<p class="vjs-no-js">
-				To view this video please enable JavaScript, and consider upgrading to a
-				web browser that
-				<a href="https://videojs.com/html5-video-support/" target="_blank"
-					>supports HTML5 video</a
-				>
-				</p>
-				
-			</video>			
+
+  <div class="box bg-black">
+    <div id="MAIN"></div>
+    <div id="containerA" style="display:none;"></div>
+    <div id="containerB" style="display:none;"></div>
+    <div id="containerAA" style="display:none;"></div>
+    <div id="containerAB" style="display:none;"></div>
+    <div id="containerBA" style="display:none;"></div>
+    <div id="containerBB" style="display:none;"></div>
+
+    <div class="btn-group ">
+      <button OnClick="clickA()" class="hover:bg-red-400 bg-opacity-25 border-2 border-white rounded-xl px-20 py-10 bg-gray-400 z-10 text-white font-bold text-xl transparent" id="btnA" style="display:none;">Project Atum</button>
+      <button OnClick="clickB()" class="hover:bg-red-400 bg-opacity-25 border-2 border-white rounded-xl px-20 py-10 bg-gray-400 z-10 text-white font-bold text-xl transparent" id="btnB" style="display:none;">Project Thoth</button>
+    </div>	
+    <div class="btn-group  ">
+			<button OnClick="clickAA()" class="hover:bg-red-400 bg-opacity-25 border-2 border-white rounded-xl px-20 py-10 bg-gray-400 z-10 text-white font-bold text-xl transparent" id="btnAA" style="display:none;">Smart Healthcare </button>
+			<button OnClick="clickAB()" class="hover:bg-red-400 bg-opacity-25 border-2 border-white rounded-xl px-20 py-10 bg-gray-400 z-10 text-white font-bold text-xl transparent" id="btnAB" style="display:none;">Smart Mobility</button>
+    </div>
+    <div class="btn-group  ">
+			<button OnClick="clickBA()" class="hover:bg-red-400 bg-opacity-25 border-2 border-white rounded-xl px-20 py-10 bg-gray-400 z-10 text-white font-bold text-xl transparent" id="btnBA" style="display:none;">Future Entertainment<br>Technology</button>
+			<button OnClick="clickBB()" class="hover:bg-red-400 bg-opacity-25 border-2 border-white rounded-xl px-20 py-10 bg-gray-400 z-10 text-white font-bold text-xl transparent" id="btnBB" style="display:none;">Smart Monitoring<br>Technology</button>
+		</div>
+  </div>
+
+    <script>
+
+		const containerA = document.getElementById('containerA');
+		const containerB = document.getElementById('containerB');
+		const containerAA = document.getElementById('containerAA');
+		const containerAB = document.getElementById('containerAB');
+		const containerBA = document.getElementById('containerBA');
+		const containerBB = document.getElementById('containerBB');
 		
-	  
-			<!-- 選擇1 -->
-				
-			<div id="conatinerA" style="display:none;">
-				<video
-				id="a_video"
-				class="video-js"
-				 
-				autoplay
-				preload="auto"
-				width="1060"
-				height="600"
-				vjs-16-9	
-				data-setup="{}"
-				>
-				<source src="./A_VIDEO.mp4" type="video/mp4" />
-				
-				<p class="vjs-no-js">
-					To view this video please enable JavaScript, and consider upgrading to a
-					web browser that
-					<a href="https://videojs.com/html5-video-support/" target="_blank"
-					>supports HTML5 video</a
-					>
-				</p>
-				</video>
-			</div>	  
-			<div id="conatinerB" style="display:none;">
-					<video
-					id="b_video"
-					class="video-js"
-					 
-					autoplay
-					preload="auto"
-					width="1060"
-					height="600"
-					vjs-16-9	
-					data-setup="{}"
-					>
-					<source src="B_VIDEO.mp4" type="video/mp4" />
-					
-					<p class="vjs-no-js">
-						To view this video please enable JavaScript, and consider upgrading to a
-						web browser that
-						<a href="https://videojs.com/html5-video-support/" target="_blank"
-						>supports HTML5 video</a
-						>
-					</p>
-					</video>	
-			</div>
-
-			<div class="btn-group ">
-				<button class="hover:bg-red-400 bg-opacity-25 border-2 border-white rounded-xl px-20 py-10 bg-gray-400 z-10 text-white font-bold text-xl transparent" id="btnA" onclick="playA()" style="display:none;">Project Atum</button>
-				<button class="hover:bg-red-400 bg-opacity-25 border-2 border-white rounded-xl px-20 py-10 bg-gray-400 z-10 text-white font-bold text-xl transparent" id="btnB" onclick="playB()" style="display:none;">Project Thoth</button>
-			</div>	
-
-
-		<!-- 選擇2 -->
-		<!-- 2-A -->
-		<div id="conatinerAA" style="display:none;">
-			<video
-				id="aa_video"
-				class="video-js"
-				 
-				autoplay
-				preload="auto"
-				width="1060"
-				height="600"
-				vjs-16-9	
-				data-setup="{}"
-			>
-				<source src="./AA_VIDEO.mp4" type="video/mp4" />
-				
-				<p class="vjs-no-js">
-				To view this video please enable JavaScript, and consider upgrading to a
-				web browser that
-				<a href="https://videojs.com/html5-video-support/" target="_blank"
-					>supports HTML5 video</a
-				>
-				</p>
-			</video>
-		</div>	  
-
-
-		<div id="conatinerAB" style="display:none;">
-			<video
-			id="ab_video"
-			class="video-js"
-			 
-			autoplay
-			preload="auto"
-			width="1060"
-			height="600"
-			vjs-16-9	
-			data-setup="{}"
-		>
-			<source src="./AB_VIDEO.mp4" type="video/mp4" />
-			
-			<p class="vjs-no-js">
-			To view this video please enable JavaScript, and consider upgrading to a
-			web browser that
-			<a href="https://videojs.com/html5-video-support/" target="_blank"
-				>supports HTML5 video</a
-			>
-			</p>
-		</video>		
-		</div>
-		<div class="btn-group  ">
-			<button class="hover:bg-red-400 bg-opacity-25 border-2 border-white rounded-xl px-20 py-10 bg-gray-400 z-10 text-white font-bold text-xl transparent" id="btnAA" onclick="playAA()" style="display:none;">Smart Healthcare </button>
-			<button class="hover:bg-red-400 bg-opacity-25 border-2 border-white rounded-xl px-20 py-10 bg-gray-400 z-10 text-white font-bold text-xl transparent" id="btnAB" onclick="playAB()" style="display:none;">Smart Mobility</button>
-		</div>
-
-		<!-- 2-B -->
-		<div id="conatinerBA" style="display:none;">
-			<video
-			id="ba_video"
-			class="video-js"
-			 
-			autoplay
-			preload="auto"
-			width="1060"
-			height="600"
-			vjs-16-9	
-			data-setup="{}"
-		>
-			<source src="./BA_VIDEO.mp4" type="video/mp4" />
-			
-			<p class="vjs-no-js">
-			To view this video please enable JavaScript, and consider upgrading to a
-			web browser that
-			<a href="https://videojs.com/html5-video-support/" target="_blank"
-				>supports HTML5 video</a
-			>
-			</p>
-		</video>			
-		</div>
-		<div id="conatinerBB" style="display:none;">
-			<video
-			id="bb_video"
-			class="video-js"
-			 
-			autoplay
-			preload="auto"
-			width="1060"
-			height="600"
-			vjs-16-9	
-			data-setup="{}"
-		>
-			<source src="./BB_VIDEO.mp4" type="video/mp4" />
-			
-			<p class="vjs-no-js">
-			To view this video please enable JavaScript, and consider upgrading to a
-			web browser that
-			<a href="https://videojs.com/html5-video-support/" target="_blank"
-				>supports HTML5 video</a
-			>
-			</p>
-		</video>		
-		</div>
-		<div class="btn-group  ">
-			<button class="hover:bg-red-400 bg-opacity-25 border-2 border-white rounded-xl px-20 py-10 bg-gray-400 z-10 text-white font-bold text-xl transparent" id="btnBA" onclick="playBA()" style="display:none;">Future Entertainment<br>Technology</button>
-			<button class="hover:bg-red-400 bg-opacity-25 border-2 border-white rounded-xl px-20 py-10 bg-gray-400 z-10 text-white font-bold text-xl transparent" id="btnBB" onclick="playBB()" style="display:none;">Smart Monitoring<br>Technology</button>
-		</div>
-
-		</main>
-  
-  <script>
-		//const
-		const main_video = videojs('main_video');
-		const a_video = videojs('a_video');
-		const b_video = videojs('b_video');
-		const aa_video = videojs('aa_video');
-		const ab_video = videojs('ab_video');
-		const ba_video = videojs('ba_video');
-		const bb_video = videojs('bb_video');
-		
-		const conatinerA = document.getElementById('conatinerA');
-		const conatinerB = document.getElementById('conatinerB');
-		const conatinerAA = document.getElementById('conatinerAA');
-		const conatinerAB = document.getElementById('conatinerAB');
-		const conatinerBA = document.getElementById('conatinerBA');
-		const conatinerBB = document.getElementById('conatinerBB');
-		
-  		const btnA = document.getElementById('btnA');
+  	const btnA = document.getElementById('btnA');
 		const btnB = document.getElementById('btnB');
-  		const btnAA = document.getElementById('btnAA');
+  	const btnAA = document.getElementById('btnAA');
 		const btnAB = document.getElementById('btnAB');		
 		const btnBA = document.getElementById('btnBA');
 		const btnBB = document.getElementById('btnBB');
 
-		function myfun(obj, btn1, btn2) {
-			// console.log("myPlayer.currentTime()", main_video.currentTime());
-			if( obj.duration() - obj.currentTime() < 8 ){
-				console.log(obj.duration() - obj.currentTime())
+    var main_video;
+    var a_video;
+    var b_video;
+    var aa_video;
+    var ab_video;
+    var ba_video;
+    var bb_video;
+
+      var done = false;
+
+      var tag = document.createElement('script');
+      tag.src = "https://www.youtube.com/iframe_api";
+      var firstScriptTag = document.getElementsByTagName('script')[0];
+      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+      function onYouTubeIframeAPIReady() {
+
+        main_video = new YT.Player('MAIN', {
+          height: '600px',
+          width: '900px',
+          videoId:'1TMY_-9oCDk',
+          events: {
+            'onReady': onPlayerReady,
+            'onStateChange': onPlayerStateChange_m,
+          },
+          playerVars: {
+            'playsinline': 1 
+          },
+        });
+
+        a_video = new YT.Player('containerA', {
+          height: '600px',
+          width: '900px',
+          videoId:'_s2dt2QZD_o',
+          events: {
+            'onReady': onPlayerReady,
+            'onStateChange': onPlayerStateChange_a
+          },
+          playerVars: {
+             'playsinline': 1
+          }
+        });
+
+        b_video = new YT.Player('containerB', {
+          height: '600px',
+          width: '900px',
+          videoId:'4x5a1qOg0uU',
+          events: {
+            'onReady': onPlayerReady,
+            'onStateChange': onPlayerStateChange_b,
+          },
+          playerVars: {
+             'playsinline': 1
+          }
+        });
+
+        aa_video = new YT.Player('containerAA', {
+          height: '600px',
+          width: '900px',
+          videoId:'CqXA6HoIf4I',
+          events: {
+            'onReady': onPlayerReady,
+            // 'onStateChange': onPlayerStateChange_aa,
+          },
+          playerVars: {
+             'playsinline': 1
+          }
+        });
+
+        ab_video = new YT.Player('containerAB', {
+          height: '600px',
+          width: '900px',
+          videoId:'4iphST-Ff6k',
+          events: {
+            'onReady': onPlayerReady,
+            // 'onStateChange': onPlayerStateChange_ab,
+          },
+          playerVars: {
+             'playsinline': 1
+          }
+        });
+
+        ba_video = new YT.Player('containerBA', {
+          height: '600px',
+          width: '900px',
+          videoId:'4oZsfBEuTYo',
+          events: {
+            'onReady': onPlayerReady,
+            // 'onStateChange': onPlayerStateChange_ba,
+          },
+          playerVars: {
+             'playsinline': 1
+          }
+        });
+
+        bb_video = new YT.Player('containerBB', {
+          height: '600px',
+          width: '900px',
+          videoId:'vK3SPRU8AeQ',
+          events: {
+            'onReady': onPlayerReady,
+            // 'onStateChange': onPlayerStateChange_bb,
+          },
+          playerVars: {
+             'playsinline': 1
+          }
+        });
+  
+      }
+
+
+
+      // function onPlayerReady_m(event) {
+      //   if ( event.target.getCurrentTime() > main_video.getDuration() -10 )
+      //   console.log(main_video.getDuration())
+      // }
+
+      function onPlayerReady(event) {
+        // event.target.playVideo();
+      }
+
+      function startInterval( player, btn1, bnt2 ) {
+        checkInt = setInterval(function() {
+          console.log(player.getCurrentTime())
+            if (player.getCurrentTime() >= player.getDuration() -10 && player.getCurrentTime() < player.getDuration() ) {
+              showBtn( btn1, bnt2 );
+              clearInterval(checkInt);
+            };
+        }, 1000)
+      }
+
+// onPlayerStateChange ============================================
+      function onPlayerStateChange_m(event) {
+        if (event.data == YT.PlayerState.PLAYING && !done) {
+          startInterval( event.target, btnA, btnB  );
+          
+        }
+
+        if (event.data == YT.PlayerState.ENDED) {
+          hideBtn( btnA, btnB );
+          hideContainer( window.MAIN );
+          showContainer( window.containerA );
+          a_video.playVideo();
+        }
+      }
+
+      function onPlayerStateChange_a(event) {
+        if (event.data == YT.PlayerState.PLAYING && !done) {
+          startInterval( event.target, btnAA, btnAB  );
+
+        }
+
+        if (event.data == YT.PlayerState.ENDED) {
+          hideBtn( btnAA, btnAB );
+          hideContainer( window.containerA );
+          showContainer( window.containerAA );
+          aa_video.playVideo();
+        }
+      }
+
+      function onPlayerStateChange_b(event) {
+        if (event.data == YT.PlayerState.PLAYING && !done) {
+          startInterval( event.target, btnBA, btnBB  );
+
+        }
+
+        if (event.data == YT.PlayerState.ENDED) {
+          hideBtn( btnBA, btnBB );
+          hideContainer( window.containerB );
+          showContainer( window.containerBA );
+          ba_video.playVideo();
+        }
+      }
+
+
+// function============================================
+      function showBtn(btn1, btn2) {
 				btn1.style.display = "block";
 				btn2.style.display = "block";
-			}
-		}
-
-		//main video
-		// main_video.on('play', () => main_video.autoplay(true))
-		main_video.on('play', () =>  main_video.controls(false));
-		main_video.on("timeupdate", function(){
-			myfun(main_video, btnA, btnB);
-		});
-		main_video.on('ended', function() {
-				playA();
-			}		
-		)
-
-		//A video
-		function playA() {
-			video = document.getElementById('a_video');
-			main_video.off();
-			main_video.muted(true);
-			this.main_video.style.display = "none";
-			this.btnA.style.display = "none";
-			this.btnB.style.display = "none";	
-			
-			conatinerA.style.display = "block";
-			a_video.play();
-			a_video.on("timeupdate", function(){
-				myfun(a_video, btnAA, btnAB);
-			});
-			a_video.on('ended', function() {
-					playAA();
-				}		
-			)
-		}			
-		
-		//B video
-		function playB() {
-			video = document.getElementById('b_video');
-			main_video.off();
-			main_video.muted(true);
-			this.main_video.style.display = "none";
-			this.btnA.style.display = "none";
-			this.btnB.style.display = "none";
-			
-			conatinerB.style.display = "block";
-			b_video.play();			
-			b_video.on("timeupdate", function(){
-				myfun(b_video, btnBA, btnBB);
-			});
-			b_video.on('ended', function() {
-					playBA();
-				}		
-			)				  
-		}		
-		
-		//AA vedio
-		function playAA() {
-			video = document.getElementById('aa_video');
-			a_video.off();
-			a_video.muted(true);
-
-			this.a_video.style.display = "none";
-			this.btnAA.style.display = "none";
-			this.btnAB.style.display = "none";
-			
-			conatinerAA.style.display = "block";
-			aa_video.play();			
-			// aa_video.on('play', () => aa_video.controls(false))	  
-		}
-		
-		//AB vedio
-		function playAB() {
-			video = document.getElementById('ab_video');
-			a_video.off();
-			a_video.muted(true);
-
-			this.a_video.style.display = "none";
-			this.btnAA.style.display = "none";
-			this.btnAB.style.display = "none";
-			
-			conatinerAB.style.display = "block";
-			ab_video.play();			
-		}		
-
-		//BA vedio
-		function playBA() {
-			video = document.getElementById('ba_video');
-			b_video.off();
-			b_video.muted(true);
-
-			this.b_video.style.display = "none";
-			this.btnBA.style.display = "none";
-			this.btnBB.style.display = "none";
-			
-			conatinerBA.style.display = "block";
-			ba_video.play();			  
-		}
-
-		//BB vedio
-		function playBB() {
-			video = document.getElementById('bb_video');
-			b_video.off();
-			b_video.muted(true);
-
-			this.b_video.style.display = "none";
-			this.btnBA.style.display = "none";
-			this.btnBB.style.display = "none";
-			
-			conatinerBB.style.display = "block";
-			bb_video.play();			 
-		}	
+        done = true;
+      }
+      function hideBtn(btn1, btn2) {
+        btn1.style.display = "none";
+        btn2.style.display = "none";
+        done = false;
+      }
+      function showContainer(container) {
+        container.style.display = "block"
+      }
+      function hideContainer(container) {
+        container.style.display = "none";
+      }
 
 
-		//test volumn reduce
-		// var defaultVolume = 1;
-		// 	videojs('main_video', {}, function() {
-		// 	this.volume(defaultVolume*0.5);
-		// });
 
-  </script>
+
+// click============================================
+      function clickA(){
+          hideBtn( btnA, btnB );
+          main_video.destroy();    
+          hideContainer( window.MAIN );
+          showContainer( window.containerA );
+          // containerA.
+      }
+      function clickB(){
+          hideBtn( btnA, btnB );
+          main_video.destroy();  
+          hideContainer( window.MAIN );
+          showContainer( window.containerB );
+      }
+      function clickAA(){
+          hideBtn( btnAA, btnAB );
+          a_video.destroy();  
+          hideContainer( window.containerA );
+          showContainer( window.containerAA );
+      }
+      function clickAB(){
+          hideBtn( btnAA, btnAB );
+          a_video.destroy();  
+          hideContainer( window.containerA );
+          showContainer( window.containerAB );
+      }
+      function clickBA(){
+          hideBtn( btnBA, btnBB );
+          b_video.destroy();    
+          hideContainer( window.containerB );
+          showContainer( window.containerBA );
+      }
+      function clickBB(){
+          hideBtn( btnBA, btnBB );
+          b_video.destroy();
+          hideContainer( window.containerB );
+          showContainer( window.containerBB );
+              
+      }
+    </script>
 </body>
+</html>
