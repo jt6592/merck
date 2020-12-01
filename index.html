@@ -116,8 +116,14 @@ https://youtu.be/vK3SPRU8AeQ
       firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
       function onYouTubeIframeAPIReady() {
+        var myHeight = '600px';
+        if( $(window).width()< 768 ){
+          myHeight = '400px';
+        }
+
+
         main_video = new YT.Player('MAIN', {
-          height: '600px',
+          height: myHeight,
           width: $(window).width(),
           videoId:'1TMY_-9oCDk',
           events: {
@@ -130,7 +136,7 @@ https://youtu.be/vK3SPRU8AeQ
         });
 
         a_video = new YT.Player('containerA', {
-          height: '600px',
+          height: myHeight,
           width: $(window).width(),
           videoId:'_s2dt2QZD_o',
           events: {
@@ -143,7 +149,7 @@ https://youtu.be/vK3SPRU8AeQ
         });
 
         b_video = new YT.Player('containerB', {
-          height: '600px',
+          height: myHeight,
           width: $(window).width(),
           videoId:'4x5a1qOg0uU',
           events: {
@@ -156,7 +162,7 @@ https://youtu.be/vK3SPRU8AeQ
         });
 
         aa_video = new YT.Player('containerAA', {
-          height: '600px',
+          height: myHeight,
           width: $(window).width(),
           videoId:'CqXA6HoIf4I',
           events: {
@@ -169,7 +175,7 @@ https://youtu.be/vK3SPRU8AeQ
         });
 
         ab_video = new YT.Player('containerAB', {
-          height: '600px',
+          height: myHeight,
           width: $(window).width(),
           videoId:'4iphST-Ff6k',
           events: {
@@ -182,7 +188,7 @@ https://youtu.be/vK3SPRU8AeQ
         });
 
         ba_video = new YT.Player('containerBA', {
-          height: '600px',
+          height: myHeight,
           width: $(window).width(),
           videoId:'4oZsfBEuTYo',
           events: {
@@ -195,7 +201,7 @@ https://youtu.be/vK3SPRU8AeQ
         });
 
         bb_video = new YT.Player('containerBB', {
-          height: '600px',
+          height: myHeight,
           width: $(window).width(),
           videoId:'vK3SPRU8AeQ',
           events: {
