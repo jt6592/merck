@@ -39,51 +39,70 @@ https://youtu.be/4oZsfBEuTYo
 		align-items: center;		
 	}
 	.btn-group {
-		max-width: 900px;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		position:absolute;
 		z-index: 99;
-		margin-top: 330px;
+    position:absolute; 
+    top:0;
+    top:80%;
+    width:100%;
 	}
 
-  @media (max-width: 640px){
+
+
+
+
+  /* @media (max-width: 640px){
       .btn-group {
-      max-width: 900px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      position:absolute;
-      z-index: 99;
-      margin-top: 250px;
-    }
-  }
+          max-width: 900px;
+          position:absolute;
+          top:50%; 
+          left:50%;
+          z-index: 99;
+      }
+  } */
 </style>
 
 <body>
 
   <div class="box bg-black">
-    <div id="MAIN"></div>
-    <div id="containerA" style="display:none;"></div>
-    <div id="containerB" style="display:none;"></div>
-    <div id="containerAA" style="display:none;"></div>
-    <div id="containerAB" style="display:none;"></div>
-    <div id="containerBA" style="display:none;"></div>
-    <div id="containerBB" style="display:none;"></div>
+   
+    <div  class="relative">
+      <div class="video-wrapper">
+        <div id="MAIN"></div> 
+      </div>
+           
+      <div class="btn-group flex items-center justify-center">
+        <button OnClick="clickA()" class="hover:bg-red-400 bg-opacity-75 border-2 border-white rounded-xl px-10 py-4 md:px-20 md:py-10 bg-gray-400 z-10 text-white font-bold text-xl transparent" id="btnA" style="display:none;">Project Atum</button>
+        <button OnClick="clickB()" class="hover:bg-red-400 bg-opacity-75 border-2 border-white rounded-xl px-10 py-4 md:px-20 md:py-10 bg-gray-400 z-10 text-white font-bold text-xl transparent" id="btnB" style="display:none;">Project Thoth</button>
+      </div>
 
-    <div class="btn-group">
-      <button OnClick="clickA()" class="hover:bg-red-400 bg-opacity-75 border-2 border-white rounded-xl px-10 py-4 md:px-20 md:py-10 bg-gray-400 z-10 text-white font-bold text-xl transparent" id="btnA" style="display:none;">Project Atum</button>
-      <button OnClick="clickB()" class="hover:bg-red-400 bg-opacity-75 border-2 border-white rounded-xl px-10 py-4 md:px-20 md:py-10 bg-gray-400 z-10 text-white font-bold text-xl transparent" id="btnB" style="display:none;">Project Thoth</button>
-    </div>	
-    <div class="btn-group  ">
-			<button OnClick="clickAA()" class="hover:bg-red-400 bg-opacity-75 border-2 border-white rounded-xl px-10 py-4 md:px-20 md:py-10 bg-gray-400 z-10 text-white font-bold text-xl transparent" id="btnAA" style="display:none;">Smart Healthcare </button>
-			<button OnClick="clickAB()" class="hover:bg-red-400 bg-opacity-75 border-2 border-white rounded-xl px-10 py-4 md:px-20 md:py-10 bg-gray-400 z-10 text-white font-bold text-xl transparent" id="btnAB" style="display:none;">Smart Mobility</button>
     </div>
-    <div class="btn-group  ">
-			<button OnClick="clickBA()" class="hover:bg-red-400 bg-opacity-75 border-2 border-white rounded-xl px-10 py-4 md:px-20 md:py-10 bg-gray-400 z-10 text-white font-bold text-xl transparent" id="btnBA" style="display:none;">Future Entertainment<br>Technology</button>
-			<button OnClick="clickBB()" class="hover:bg-red-400 bg-opacity-75 border-2 border-white rounded-xl px-10 py-4 md:px-20 md:py-10 bg-gray-400 z-10 text-white font-bold text-xl transparent" id="btnBB" style="display:none;">Smart Monitoring<br>Technology</button>
-		</div>
+
+
+    <div class="relative">
+      <div id="containerA" style="display:none;"></div>
+      <div id="containerB" style="display:none;"></div>
+      <div class="btn-group flex items-center justify-center">
+        <button OnClick="clickAA()" class="hover:bg-red-400 bg-opacity-75 border-2 border-white rounded-xl px-10 py-4 md:px-20 md:py-10 bg-gray-400 z-10 text-white font-bold text-xl transparent" id="btnAA" style="display:none;">Smart Healthcare </button>
+        <button OnClick="clickAB()" class="hover:bg-red-400 bg-opacity-75 border-2 border-white rounded-xl px-10 py-4 md:px-20 md:py-10 bg-gray-400 z-10 text-white font-bold text-xl transparent" id="btnAB" style="display:none;">Smart Mobility</button>
+      </div>
+      <div class="btn-group flex items-center justify-center">
+        <button OnClick="clickBA()" class="hover:bg-red-400 bg-opacity-75 border-2 border-white rounded-xl px-10 py-4 md:px-20 md:py-10 bg-gray-400 z-10 text-white font-bold text-xl transparent" id="btnBA" style="display:none;">Future Entertainment<br>Technology</button>
+        <button OnClick="clickBB()" class="hover:bg-red-400 bg-opacity-75 border-2 border-white rounded-xl px-10 py-4 md:px-20 md:py-10 bg-gray-400 z-10 text-white font-bold text-xl transparent" id="btnBB" style="display:none;">Smart Monitoring<br>Technology</button>
+      </div>
+    </div>
+
+
+    <div class="relative">
+      <div id="containerAA" style="display:none;"></div>
+      <div id="containerAB" style="display:none;"></div>
+
+    </div>
+
+    <div class="relative">
+      <div id="containerBA" style="display:none;"></div>
+      <div id="containerBB" style="display:none;"></div>
+
+    </div>
   </div>
 
     <script>
@@ -127,6 +146,7 @@ https://youtu.be/4oZsfBEuTYo
       firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
       function onYouTubeIframeAPIReady() {
+        var controlsValue = 1; // 0 = no controls
 
         main_video = new YT.Player('MAIN', {
           height: $(window).height(),
@@ -138,7 +158,7 @@ https://youtu.be/4oZsfBEuTYo
           },
           playerVars: {
             'playsinline': 1,
-            'controls': 0,
+            'controls': controlsValue,
 
           },
         });
@@ -153,7 +173,7 @@ https://youtu.be/4oZsfBEuTYo
           },
           playerVars: {
              'playsinline': 1,
-             'controls': 0,
+             'controls': controlsValue,
           }
         });
 
@@ -167,7 +187,7 @@ https://youtu.be/4oZsfBEuTYo
           },
           playerVars: {
              'playsinline': 1,
-              'controls': 0,
+              'controls': controlsValue,
           }
         });
 
@@ -177,11 +197,11 @@ https://youtu.be/4oZsfBEuTYo
           videoId:'CqXA6HoIf4I',
           events: {
             'onReady': onPlayerReady,
-            // 'onStateChange': onPlayerStateChange_aa,
+            'onStateChange': onPlayerStateChange_other
           },
           playerVars: {
              'playsinline': 1,
-             'controls': 0,
+             'controls': controlsValue,
           }
         });
 
@@ -191,11 +211,11 @@ https://youtu.be/4oZsfBEuTYo
           videoId:'4iphST-Ff6k',
           events: {
             'onReady': onPlayerReady,
-            // 'onStateChange': onPlayerStateChange_ab,
+            'onStateChange': onPlayerStateChange_other
           },
           playerVars: {
              'playsinline': 1,
-             'controls': 0,
+             'controls': controlsValue,
           }
         });
 
@@ -205,10 +225,11 @@ https://youtu.be/4oZsfBEuTYo
           videoId:'vK3SPRU8AeQ',
           events: {
             'onReady': onPlayerReady,
-            // 'onStateChange': onPlayerStateChange_ba,
+            'onStateChange': onPlayerStateChange_other
           },
           playerVars: {
-             'playsinline': 1
+             'playsinline': 1,
+             'controls': controlsValue,
           }
         });
 
@@ -218,11 +239,11 @@ https://youtu.be/4oZsfBEuTYo
           videoId:'4oZsfBEuTYo',
           events: {
             'onReady': onPlayerReady,
-            // 'onStateChange': onPlayerStateChange_bb,
+            'onStateChange': onPlayerStateChange_other
           },
           playerVars: {
              'playsinline': 1,
-             'controls': 0,
+             'controls': controlsValue,
           }
         });
   
@@ -266,12 +287,17 @@ https://youtu.be/4oZsfBEuTYo
         }, 1000)
       }      
 
+      function resize( e ){
+        $( window ).resize(function() {
+           e.target.setSize( $(window).width() , $(window).height() );
+        });
+      }
 
 // onPlayerStateChange ============================================
       function onPlayerStateChange_m(event) {
         if (event.data == YT.PlayerState.PLAYING ) {
           startInterval( event.target, btnA, btnB );
-          
+          resize( event );
         }
 
         if (event.data == YT.PlayerState.ENDED) {
@@ -285,7 +311,7 @@ https://youtu.be/4oZsfBEuTYo
       function onPlayerStateChange_a(event) {
         if (event.data == YT.PlayerState.PLAYING ) {
           startInterval2( event.target, btnAA, btnAB  );
-
+          // resize( event );
         }
 
         if (event.data == YT.PlayerState.ENDED) {
@@ -293,13 +319,14 @@ https://youtu.be/4oZsfBEuTYo
           hideContainer( window.containerA );
           showContainer( window.containerAA );
           aa_video.playVideo();
+          
         }
       }
 
       function onPlayerStateChange_b(event) {
         if (event.data == YT.PlayerState.PLAYING ) {
           startInterval3( event.target, btnBA, btnBB );
-
+          // resize( event );
         }
 
         if (event.data == YT.PlayerState.ENDED) {
@@ -307,9 +334,15 @@ https://youtu.be/4oZsfBEuTYo
           hideContainer( window.containerB );
           showContainer( window.containerBA );
           ba_video.playVideo();
+   
         }
       }
 
+      function onPlayerStateChange_other () {
+        if (event.data == YT.PlayerState.PLAYING ) {
+          // resize( event );
+        }
+      }
 
 // function============================================
       function showBtn(btn1, btn2) {
