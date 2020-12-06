@@ -39,6 +39,7 @@ https://youtu.be/FcqhOOE3X8A
  -->
 <style>
 	.box{
+    position: relative;
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
@@ -49,7 +50,37 @@ https://youtu.be/FcqhOOE3X8A
     font-family: Verdana, Geneva, sans-serif;
   }
 
-  @media screen and (orientation: landscape) {
+
+  .btn-group {
+      display: flex;
+      justify-content: center;
+      align-items: center;		    
+      z-index: 99;
+      position:absolute; 
+      top:0;
+      top:60%;
+      width:100%;
+    }
+
+    .btn-group-one {
+      display: flex;
+      justify-content: center;
+      align-items: center;		    
+      z-index: 99;
+      position:absolute; 
+      top:0;
+      top:70%;
+      width:100%;
+    } 
+
+  @media (max-width: 640px) {
+    button {
+      border: 1px;
+      border-style: solid;
+    }
+  }
+
+  /* @media screen and (orientation: landscape) {
     .btn-group, .btn-group-one {
       display: flex;
       justify-content: center;
@@ -60,21 +91,7 @@ https://youtu.be/FcqhOOE3X8A
       top:80%;
       width:100%;
     }
-    @media (max-width: 425){
-      .btn-group, .btn-group-one {
-        display: flex;
-        justify-content: center;
-        align-items: center;		    
-        z-index: 99;
-        position:absolute; 
-        top:0;
-        top:80%;
-        max-width:425px;
-      }
-    }
   }
-
-
 
   @media screen and (orientation: portrait) {
     button {
@@ -103,20 +120,7 @@ https://youtu.be/FcqhOOE3X8A
           top:50%;
           width:100%;   
     }
-
-    @media (max-width: 425){
-      .btn-group, .btn-group-one {
-        display: flex;
-        justify-content: center;
-        align-items: center;		    
-        z-index: 99;
-        position:absolute; 
-        top:0;
-        top:80%;
-        max-width:425px;
-      }
-    }
-  }
+  } */
 
 </style>
 
@@ -124,7 +128,7 @@ https://youtu.be/FcqhOOE3X8A
 
 
 
-  <div class="box bg-black">
+  <div class="box bg-gray-400">
    
     <div  class="relative">
       <div class="video-wrapper">
@@ -147,7 +151,7 @@ https://youtu.be/FcqhOOE3X8A
       <div id="containerA" style="display:none;"></div>
       <div id="containerB" style="display:none;"></div>
       <div class="btn-group flex items-center justify-center">
-        <button OnClick="clickAA()" class="hover:bg-red-400 bg-opacity-75  md:border-2 border-white rounded-xl  px-3 py-2 md:px-8 md:py-4 bg-gray-400 z-10 text-white md:font-bold text-sm md:text-xl transparent" id="btnAA" style="display:none;">智慧醫療<br>Smart Healthcare</button>
+        <button OnClick="clickAA()" class="hover:bg-red-400 bg-opacity-75  md:border-2 border-white rounded-xl  px-2 py-2 md:px-8 md:py-4 bg-gray-400 z-10 text-white md:font-bold text-sm md:text-xl transparent" id="btnAA" style="display:none;">智慧醫療<br>Smart Healthcare</button>
         <button OnClick="clickAB()" class="hover:bg-red-400 bg-opacity-75  md:border-2 border-white rounded-xl  px-4 py-2 md:px-10 md:py-4 bg-gray-400 z-10 text-white md:font-bold text-sm md:text-xl transparent" id="btnAB" style="display:none;">智慧運輸<br>Smart Mobility</button>
       </div>
       <div class="btn-group flex items-center justify-center">
@@ -203,6 +207,7 @@ https://youtu.be/FcqhOOE3X8A
     var clickedBB = false;
 
 
+
       var done = false;
 
       var tag = document.createElement('script');
@@ -212,105 +217,173 @@ https://youtu.be/FcqhOOE3X8A
 
       function onYouTubeIframeAPIReady() {
         var controlsValue = 1; // 0 = no controls
+        var landscape = $(window).height() <= $(window).width();
+        var portrait = $(window).height() > $(window).width();
 
-        main_video = new YT.Player('MAIN', {
-          height: $(window).height(),
-          width: $(window).width(),
-          videoId: "9fPl7yYqBts",
-          events: {
-            'onReady': onPlayerReady,
-            'onStateChange': onPlayerStateChange_m,
-          },
-          playerVars: {
-            'playsinline': 1,
-            'controls': controlsValue,
+        var main_video_data = renderVideo( "9fPl7yYqBts", onPlayerStateChange_m );
+        var a_video_data = renderVideo( "yOCxZRbwipE", onPlayerStateChange_a );
+        var b_video_data = renderVideo( "g2qxPuPoV5c", onPlayerStateChange_b );
+        var aa_video_data = renderVideo( "tnPscr4MZb4", onPlayerStateChange_other );
+        var ab_video_data = renderVideo( "zQa9lrEor1g", onPlayerStateChange_other );
+        var ba_video_data = renderVideo( "FghZx1o4ePE", onPlayerStateChange_other );
+        var bb_video_data = renderVideo( "FcqhOOE3X8A", onPlayerStateChange_other );
 
-          },
-        });
-
-        a_video = new YT.Player('containerA', {
-          height: $(window).height(),
-          width: $(window).width(),
-          videoId: "yOCxZRbwipE",
-          events: {
-            'onReady': onPlayerReady,
-            'onStateChange': onPlayerStateChange_a
-          },
-          playerVars: {
-             'playsinline': 1,
-             'controls': controlsValue,
-          }
-        });
-
-        b_video = new YT.Player('containerB', {
-          height: $(window).height(),
-          width: $(window).width(),
-          videoId: "g2qxPuPoV5c",
-          events: {
-            'onReady': onPlayerReady,
-            'onStateChange': onPlayerStateChange_b,
-          },
-          playerVars: {
-             'playsinline': 1,
+        function renderVideo( video_id, onStateChange ){
+          let video_data;
+          if ( $(window).height() < $(window).width() ){
+            video_data = {
+            height: $(window).height(),
+            width: $(window).width(),
+            videoId: video_id,
+            events: {
+              'onReady': onPlayerReady,
+              'onStateChange': onStateChange,
+            },
+            playerVars: {
+              'playsinline': 1,
               'controls': controlsValue,
+            },
           }
-        });
+          } else { //直
+            video_data = {
+              height: $(window).width()*(9/16),
+              width: $(window).width(),
+              videoId: video_id,
+              events: {
+                'onReady': onPlayerReady,
+                'onStateChange': onStateChange,
+              },
+              playerVars: {
+                'playsinline': 1,
+                'controls': controlsValue,
+              },
+            }
+          }
+          return video_data;
+        }
+        //橫
+        // if ( $(window).height() < $(window).width() ){
+        //   main_video_data = {
+        //     height: $(window).height(),
+        //     width: $(window).width(),
+        //     videoId: "9fPl7yYqBts",
+        //     events: {
+        //       'onReady': onPlayerReady,
+        //       'onStateChange': onPlayerStateChange_m,
+        //     },
+        //     playerVars: {
+        //       'playsinline': 1,
+        //       'controls': controlsValue,
+        //     },
+        //   }
+        // } else { //直
+        //   main_video_data = {
+        //     height: $(window).width()*(9/16),
+        //     width: $(window).width(),
+        //     videoId: "9fPl7yYqBts",
+        //     events: {
+        //       'onReady': onPlayerReady,
+        //       'onStateChange': onPlayerStateChange_m,
+        //     },
+        //     playerVars: {
+        //       'playsinline': 1,
+        //       'controls': controlsValue,
+        //     },
+        //   }
+        // }
 
-        aa_video = new YT.Player('containerAA', {
-          height: $(window).height(),
-          width: $(window).width(),
-          videoId: "tnPscr4MZb4",
-          events: {
-            'onReady': onPlayerReady,
-            'onStateChange': onPlayerStateChange_other
-          },
-          playerVars: {
-             'playsinline': 1,
-             'controls': controlsValue,
-          }
-        });
 
-        ab_video = new YT.Player('containerAB', {
-          height: $(window).height(),
-          width: $(window).width(),
-          videoId: "zQa9lrEor1g",
-          events: {
-            'onReady': onPlayerReady,
-            'onStateChange': onPlayerStateChange_other
-          },
-          playerVars: {
-             'playsinline': 1,
-             'controls': controlsValue,
-          }
-        });
 
-        ba_video = new YT.Player('containerBA', {
-          height: $(window).height(),
-          width: $(window).width(),
-          videoId: "FghZx1o4ePE",
-          events: {
-            'onReady': onPlayerReady,
-            'onStateChange': onPlayerStateChange_other
-          },
-          playerVars: {
-             'playsinline': 1,
-             'controls': controlsValue,
-          }
-        });
+        main_video = new YT.Player('MAIN', main_video_data);
+        a_video = new YT.Player('containerA', a_video_data);
+        b_video = new YT.Player('containerB', b_video_data);
+        aa_video = new YT.Player('containerAA', aa_video_data);
+        ab_video = new YT.Player('containerAB', ab_video_data);
+        ba_video = new YT.Player('containerBA', ba_video_data);
+        bb_video = new YT.Player('containerBB', bb_video_data);
+        // a_video = new YT.Player('containerA', {
+        //   height: $(window).height(),
+        //   width: $(window).width(),
+        //   videoId: "yOCxZRbwipE",
+        //   events: {
+        //     'onReady': onPlayerReady,
+        //     'onStateChange': onPlayerStateChange_a
+        //   },
+        //   playerVars: {
+        //      'playsinline': 1,
+        //      'controls': controlsValue,
+        //   }
+        // });
 
-        bb_video = new YT.Player('containerBB', {
-          height: $(window).height(),
-          width: $(window).width(),
-          videoId: "FcqhOOE3X8A",
-          events: {
-            'onReady': onPlayerReady,
-            'onStateChange': onPlayerStateChange_other
-          },
-          playerVars: {
-             'playsinline': 1,
-             'controls': controlsValue,
-          }
-        });
+        // b_video = new YT.Player('containerB', {
+        //   height: $(window).height(),
+        //   width: $(window).width(),
+        //   videoId: "g2qxPuPoV5c",
+        //   events: {
+        //     'onReady': onPlayerReady,
+        //     'onStateChange': onPlayerStateChange_b,
+        //   },
+        //   playerVars: {
+        //      'playsinline': 1,
+        //       'controls': controlsValue,
+        //   }
+        // });
+
+        // aa_video = new YT.Player('containerAA', {
+        //   height: $(window).height(),
+        //   width: $(window).width(),
+        //   videoId: "tnPscr4MZb4",
+        //   events: {
+        //     'onReady': onPlayerReady,
+        //     'onStateChange': onPlayerStateChange_other
+        //   },
+        //   playerVars: {
+        //      'playsinline': 1,
+        //      'controls': controlsValue,
+        //   }
+        // });
+
+        // ab_video = new YT.Player('containerAB', {
+        //   height: $(window).height(),
+        //   width: $(window).width(),
+        //   videoId: "zQa9lrEor1g",
+        //   events: {
+        //     'onReady': onPlayerReady,
+        //     'onStateChange': onPlayerStateChange_other
+        //   },
+        //   playerVars: {
+        //      'playsinline': 1,
+        //      'controls': controlsValue,
+        //   }
+        // });
+
+        // ba_video = new YT.Player('containerBA', {
+        //   height: $(window).height(),
+        //   width: $(window).width(),
+        //   videoId: "FghZx1o4ePE",
+        //   events: {
+        //     'onReady': onPlayerReady,
+        //     'onStateChange': onPlayerStateChange_other
+        //   },
+        //   playerVars: {
+        //      'playsinline': 1,
+        //      'controls': controlsValue,
+        //   }
+        // });
+
+        // bb_video = new YT.Player('containerBB', {
+        //   height: $(window).height(),
+        //   width: $(window).width(),
+        //   videoId: "FcqhOOE3X8A",
+        //   events: {
+        //     'onReady': onPlayerReady,
+        //     'onStateChange': onPlayerStateChange_other
+        //   },
+        //   playerVars: {
+        //      'playsinline': 1,
+        //      'controls': controlsValue,
+        //   }
+        // });
   
       }
 
@@ -357,6 +430,7 @@ https://youtu.be/FcqhOOE3X8A
            e.target.setSize( $(window).width() , $(window).height() );
         });
       }
+
 
 // onPlayerStateChange ============================================
       function onPlayerStateChange_m(event) {
