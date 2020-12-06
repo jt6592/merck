@@ -52,26 +52,26 @@ https://youtu.be/FcqhOOE3X8A
 
 
   .btn-group {
-      display: flex;
-      justify-content: center;
-      align-items: center;		    
-      z-index: 99;
-      position:absolute; 
-      top:0;
-      top:60%;
-      width:100%;
-    }
+    display: flex;
+    justify-content: center;
+    align-items: center;		    
+    z-index: 99;
+    position:absolute; 
+    top:0;
+    top:60%;
+    width:100%;
+  }
 
-    .btn-group-one {
-      display: flex;
-      justify-content: center;
-      align-items: center;		    
-      z-index: 99;
-      position:absolute; 
-      top:0;
-      top:70%;
-      width:100%;
-    } 
+  .btn-group-one {
+    display: flex;
+    justify-content: center;
+    align-items: center;		    
+    z-index: 99;
+    position:absolute; 
+    top:0;
+    top:70%;
+    width:100%;
+  } 
 
   @media (max-width: 768px) {
     button {
@@ -148,8 +148,12 @@ https://youtu.be/FcqhOOE3X8A
 
 
     <div class="relative">
-      <div id="containerA" style="display:none;"></div>
-      <div id="containerB" style="display:none;"></div>
+      <div class="video-wrapper">
+        <div id="containerA" style="display:none;"></div> 
+      </div>
+      <div class="video-wrapper">
+        <div id="containerB" style="display:none;"></div>
+      </div>
       <div class="btn-group flex items-center justify-center">
         <button OnClick="clickAA()" class="mr-2 hover:bg-red-400 bg-opacity-75  md:border-2 border-white rounded-xl  px-2 py-2 md:px-8 md:py-4 bg-gray-400 z-10 text-white md:font-bold text-sm md:text-xl transparent" id="btnAA" style="display:none;">智慧醫療<br>Smart Healthcare</button>
         <button OnClick="clickAB()" class="hover:bg-red-400 bg-opacity-75  md:border-2 border-white rounded-xl  px-4 py-2 md:px-10 md:py-4 bg-gray-400 z-10 text-white md:font-bold text-sm md:text-xl transparent" id="btnAB" style="display:none;">智慧運輸<br>Smart Mobility</button>
@@ -162,15 +166,21 @@ https://youtu.be/FcqhOOE3X8A
 
 
     <div class="relative">
-      <div id="containerAA" style="display:none;"></div>
-      <div id="containerAB" style="display:none;"></div>
-
+      <div class="video-wrapper">
+        <div id="containerAA" style="display:none;"></div> 
+      </div>
+      <div class="video-wrapper">
+        <div id="containerAB" style="display:none;"></div>
+      </div>
     </div>
 
     <div class="relative">
-      <div id="containerBA" style="display:none;"></div>
-      <div id="containerBB" style="display:none;"></div>
-
+      <div class="video-wrapper">
+        <div id="containerBA" style="display:none;"></div> 
+      </div>
+      <div class="video-wrapper">
+        <div id="containerBB" style="display:none;"></div>
+      </div>
     </div>
   </div>
 
