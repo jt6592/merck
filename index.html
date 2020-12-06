@@ -11,19 +11,31 @@
 
 <!-- 
 MAIN
-https://youtu.be/1TMY_-9oCDk
+https://youtu.be/9fPl7yYqBts
+
 A
-https://youtu.be/_s2dt2QZD_o
+Project Atum
+https://youtu.be/yOCxZRbwipE
+
 B
-https://youtu.be/4x5a1qOg0uU
+Project Thoth
+https://youtu.be/g2qxPuPoV5c
+
 AA
-https://youtu.be/CqXA6HoIf4I
+智慧醫療<br>Smart Healthcare
+https://youtu.be/tnPscr4MZb4
+
 AB
-https://youtu.be/4iphST-Ff6k
+智慧運輸<br>Smart Mobility
+https://youtu.be/zQa9lrEor1g
+
 BA
-https://youtu.be/vK3SPRU8AeQ
+智慧育樂<br>Future Entertainment<br>Technology
+https://youtu.be/FghZx1o4ePE
+
 BB
-https://youtu.be/4oZsfBEuTYo
+智慧檢測<br>Smart Monitoring<br>Technology
+https://youtu.be/FcqhOOE3X8A
  -->
 <style>
 	.box{
@@ -78,7 +90,7 @@ https://youtu.be/4oZsfBEuTYo
       <div id="containerA" style="display:none;"></div>
       <div id="containerB" style="display:none;"></div>
       <div class="btn-group flex items-center justify-center">
-        <button OnClick="clickAA()" class="hover:bg-red-400 bg-opacity-75 border-2 border-white rounded-xl  px-6 py-2 md:px-10 md:py-4 bg-gray-400 z-10 text-white font-bold text-xl transparent" id="btnAA" style="display:none;">智慧醫療<br>Smart Healthcare </button>
+        <button OnClick="clickAA()" class="hover:bg-red-400 bg-opacity-75 border-2 border-white rounded-xl  px-6 py-2 md:px-10 md:py-4 bg-gray-400 z-10 text-white font-bold text-xl transparent" id="btnAA" style="display:none;">智慧醫療<br>Smart Healthcare</button>
         <button OnClick="clickAB()" class="hover:bg-red-400 bg-opacity-75 border-2 border-white rounded-xl  px-6 py-2 md:px-10 md:py-4 bg-gray-400 z-10 text-white font-bold text-xl transparent" id="btnAB" style="display:none;">智慧運輸<br>Smart Mobility</button>
       </div>
       <div class="btn-group flex items-center justify-center">
@@ -417,7 +429,10 @@ https://youtu.be/4oZsfBEuTYo
           clickedBA = true;
           clickedBB = true;  
       }
-    </script>
+
+
+  window.onresize = function(){ location.reload(); }
+</script>
 
 
 
@@ -465,5 +480,6 @@ if(isWebview()) {
 
 
 </script>
+
 </body>
 </html>
