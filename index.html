@@ -402,7 +402,7 @@ https://youtu.be/FcqhOOE3X8A
       function onPlayerStateChange_a(event) {
         if (event.data == YT.PlayerState.PLAYING ) {
           startInterval2( event.target, btnAA, btnAB  );
-          // resize( event );
+          resize( event );
         }
 
         if (event.data == YT.PlayerState.ENDED) {
@@ -417,7 +417,7 @@ https://youtu.be/FcqhOOE3X8A
       function onPlayerStateChange_b(event) {
         if (event.data == YT.PlayerState.PLAYING ) {
           startInterval3( event.target, btnBA, btnBB );
-          // resize( event );
+          resize( event );
         }
 
         if (event.data == YT.PlayerState.ENDED) {
@@ -431,7 +431,7 @@ https://youtu.be/FcqhOOE3X8A
 
       function onPlayerStateChange_other () {
         if (event.data == YT.PlayerState.PLAYING ) {
-          // resize( event );
+          resize( event );
         }
       }
 
