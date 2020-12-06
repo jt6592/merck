@@ -45,6 +45,7 @@ https://youtu.be/FcqhOOE3X8A
 		flex-direction: column;
 		justify-content: center;
 		align-items: center;		
+    width: 100%
 	}
 
   body{
@@ -83,17 +84,14 @@ https://youtu.be/FcqhOOE3X8A
 
 </style>
 
-<body>
+<body class="bg-yellow-500">
 
-
-
-  <div class="box bg-yello-500">
+  <div class="box bg-yellow-500">
    
     <div  class="relative">
       <div class="video-wrapper">
         <div id="MAIN"></div> 
       </div>
-           
       <div class="btn-group-one">
         <button OnClick="clickA()" 
         class="mr-2 hover:bg-red-400 bg-opacity-75  md:border-2 border-white rounded-xl  
@@ -103,7 +101,6 @@ https://youtu.be/FcqhOOE3X8A
         px-4 py-2 md:px-10 md:py-4 bg-gray-400 z-10 text-white md:font-bold text-sm md:text-xl transparent" id="btnB" style="display:none;">Project Thoth</button>
       </div>
     </div>
-
 
     <div class="relative">
       <div class="video-wrapper">
@@ -121,7 +118,6 @@ https://youtu.be/FcqhOOE3X8A
         <button OnClick="clickBB()" class="hover:bg-red-400 bg-opacity-75  md:border-2 border-white rounded-xl px-4 py-2 md:px-10 md:py-4 bg-gray-400 z-10 text-white font-light md:font-bold text-sm md:text-xl transparent" id="btnBB" style="display:none;">智慧檢測<br>Smart Monitoring</button>
       </div>
     </div>
-
 
     <div class="relative">
       <div class="video-wrapper">
@@ -166,7 +162,6 @@ https://youtu.be/FcqhOOE3X8A
     var ba_video;
     var bb_video;
 
-
     var clickedA = false;
     var clickedB = false;
     var clickedAA = false;
@@ -174,34 +169,32 @@ https://youtu.be/FcqhOOE3X8A
     var clickedBA = false;
     var clickedBB = false;
 
+    $( window ).resize(function() {
 
-      var done = false;
+    });
 
       var tag = document.createElement('script');
       tag.src = "https://www.youtube.com/iframe_api";
       var firstScriptTag = document.getElementsByTagName('script')[0];
       firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
-      function onYouTubeIframeAPIReady() {
-        var controlsValue = 0; // 0 = no controls
+        function onYouTubeIframeAPIReady() {
+        var controlsValue = 1; // 0 = no controls
 
-        var main_video_data = renderVideo( "9fPl7yYqBts", onPlayerStateChange_m );
-        var a_video_data = renderVideo( "yOCxZRbwipE", onPlayerStateChange_a );
-        var b_video_data = renderVideo( "g2qxPuPoV5c", onPlayerStateChange_b );
-        var aa_video_data = renderVideo( "tnPscr4MZb4", onPlayerStateChange_other );
-        var ab_video_data = renderVideo( "zQa9lrEor1g", onPlayerStateChange_other );
-        var ba_video_data = renderVideo( "FghZx1o4ePE", onPlayerStateChange_other );
-        var bb_video_data = renderVideo( "FcqhOOE3X8A", onPlayerStateChange_other );
-
-        function renderVideo( video_id, onStateChange ){
-          var videoWidth = 1440;
-          if ( $(window).width() < 1440 ){
-            videoWidth = $(window).width();
-          }
+        var main_video_data = prepareVideo( "9fPl7yYqBts", onPlayerStateChange_m );
+        var a_video_data = prepareVideo( "yOCxZRbwipE", onPlayerStateChange_a );
+        var b_video_data = prepareVideo( "g2qxPuPoV5c", onPlayerStateChange_b );
+        var aa_video_data = prepareVideo( "tnPscr4MZb4", onPlayerStateChange_other );
+        var ab_video_data = prepareVideo( "zQa9lrEor1g", onPlayerStateChange_other );
+        var ba_video_data = prepareVideo( "FghZx1o4ePE", onPlayerStateChange_other );
+        var bb_video_data = prepareVideo( "FcqhOOE3X8A", onPlayerStateChange_other );
+        
+        function prepareVideo( video_id, onStateChange ){
+          var videoWidth;
 
           let video_data = {
-              height: videoWidth*(9/16),
-              width: videoWidth,
+              height: 1280* 9/16,
+              width: 1280,
               videoId: video_id,
               events: {
                 'onReady': onPlayerReady,
@@ -226,14 +219,17 @@ https://youtu.be/FcqhOOE3X8A
       }
 
 
+
+
       function onPlayerReady(event) {
-        event.target.pauseVideo();
+        // event.target.pauseVideo();
+        resize( event );
       }
 
       function startInterval( player, btn1, bnt2 ) {
         checkInt = setInterval(function() {
-          console.log("startInterval")
-          console.log(player.getCurrentTime())
+          // console.log("startInterval")
+          // console.log(player.getCurrentTime())
             if (player.getCurrentTime() >= player.getDuration()-12 && player.getCurrentTime() < player.getDuration()-1 && !clickedA && !clickedB) {
               showBtn( btn1, bnt2 );
               clearInterval(checkInt);
@@ -243,8 +239,8 @@ https://youtu.be/FcqhOOE3X8A
 
       function startInterval2( player, btn1, bnt2 ) {
         checkInt = setInterval(function() {
-          console.log("startInterval2")
-          console.log(player.getCurrentTime())
+          // console.log("startInterval2")
+          // console.log(player.getCurrentTime())
             if (player.getCurrentTime() >= player.getDuration()-6 && player.getCurrentTime() < player.getDuration()-1 && !clickedAA && !clickedAB ) {
               showBtn( btn1, bnt2 );
               clearInterval(checkInt);
@@ -254,8 +250,8 @@ https://youtu.be/FcqhOOE3X8A
 
       function startInterval3( player, btn1, bnt2 ) {
         checkInt = setInterval(function() {
-          console.log("startInterval3")
-          console.log(player.getCurrentTime())
+          // console.log("startInterval3")
+          // console.log(player.getCurrentTime())
             if (player.getCurrentTime() >= player.getDuration()-7 && player.getCurrentTime() < player.getDuration()-1 && !clickedBA && !clickedBB) {
               showBtn( btn1, bnt2 );
               clearInterval(checkInt);
@@ -263,19 +259,33 @@ https://youtu.be/FcqhOOE3X8A
         }, 1000)
       }      
 
-      // function resize( e ){
-      //   $( window ).resize(function() {
-      //      e.target.setSize( $(window).width() , $(window).width()*(9/16) );
-      //   });
-      // }
-
+      function resize(event){
+        // $( window ).resize(function() {
+        //   video.setSize( $(window).width() , $(window).width()*(9/16) );
+        // });
+        // video.setSize( $(window).width() , $(window).width()*(9/16) );
+        
+        let landscape = $(window).height() <= $(window).width();
+        let videoWidth;
+        let videoHeight;
+        //   if(landscape){
+        //     videoHeight = $(window).height();
+        //     videoWidth = $(window).width() *(16/9);
+        //   }
+        //   else{
+        //     videoWidth = $(window).width();
+        //     videoHeight = videoWidth*(9/16);
+        // }
+        videoWidth = $(window).width();
+        videoHeight = $(window).width()*(9/16);
+        event.target.setSize( videoWidth , videoHeight );
+      }
 
 // onPlayerStateChange ============================================
       function onPlayerStateChange_m(event) {
         if (event.data == YT.PlayerState.PLAYING ) {
           startInterval( event.target, btnA, btnB );
-          console.log(66)
-          // resize( event );
+          resize( event );
         }
 
         if (event.data == YT.PlayerState.ENDED) {
@@ -283,13 +293,13 @@ https://youtu.be/FcqhOOE3X8A
           hideContainer( window.MAIN );
           showContainer( window.containerA );
           a_video.playVideo();
-          // resize( event );
         }
       }
 
       function onPlayerStateChange_a(event) {
         if (event.data == YT.PlayerState.PLAYING ) {
           startInterval2( event.target, btnAA, btnAB  );
+          resize( event );
         }
 
         if (event.data == YT.PlayerState.ENDED) {
@@ -303,6 +313,7 @@ https://youtu.be/FcqhOOE3X8A
       function onPlayerStateChange_b(event) {
         if (event.data == YT.PlayerState.PLAYING ) {
           startInterval3( event.target, btnBA, btnBB );
+          resize( event  );
         }
 
         if (event.data == YT.PlayerState.ENDED) {
@@ -311,12 +322,11 @@ https://youtu.be/FcqhOOE3X8A
           showContainer( window.containerBA );
           ba_video.playVideo();
         }
-        
       }
 
       function onPlayerStateChange_other (event) {
         if (event.data == YT.PlayerState.PLAYING ) {
-          // resize( event );
+          resize( event );
         }
       }
 
@@ -324,12 +334,11 @@ https://youtu.be/FcqhOOE3X8A
       function showBtn(btn1, btn2) {
 				btn1.style.display = "block";
 				btn2.style.display = "block";
-        // done = true;
+
       }
       function hideBtn(btn1, btn2) {
         btn1.style.display = "none";
         btn2.style.display = "none";
-        // done = false;
       }
       function showContainer(container) {
         container.style.display = "block"
@@ -337,9 +346,6 @@ https://youtu.be/FcqhOOE3X8A
       function hideContainer(container) {
         container.style.display = "none";
       }
-
-
-
 
 // click============================================
       function clickA(){
@@ -397,38 +403,6 @@ https://youtu.be/FcqhOOE3X8A
           clickedBA = true;
           clickedBB = true;  
       }
-
-</script>
-
-
-
-
-
-<script>
-  function isWebview() {
-    var useragent = navigator.userAgent;
-    var rules = ['WebView','(iPhone|iPod|iPad)(?!.*Safari\/)','Android.*(wv|\.0\.0\.0)'];
-    var regex = new RegExp(`(${rules.join('|')})`, 'ig');
-    return Boolean(useragent.match(regex));
-}
-
-var iOS = !!navigator.platform && /iPad|iPhone|iPod/.test(navigator.platform);
-
-if(isWebview()) {
-
-    $("#myModal").modal("show");
-
-    if(iOS) {
-       window.location = "googlechrome://"+location.host+location.pathname;
-
-    } else if(/Micro/.test(navigator.userAgent)) {
-     window.location = "intent://"+window.location.href.split("//")[1]+"#Intent;scheme=https;action=android.intent.action.VIEW;end;";
-    }
-    else {
-      window.location = "intent://"+window.location.href.split("//")[1]+"#Intent;scheme=https;action=android.intent.action.VIEW;end;";
-    }				
-}
-
 
 </script>
 
