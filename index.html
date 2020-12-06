@@ -84,7 +84,7 @@ https://youtu.be/FcqhOOE3X8A
 
 </style>
 
-<body class="bg-yellow-500">
+<body class="bg-yellow-500" onload="setTimeout(function() {window.scrollTo(0, 1)}, 100)">
 
   <div class="box bg-yellow-500">
    
@@ -169,17 +169,13 @@ https://youtu.be/FcqhOOE3X8A
     var clickedBA = false;
     var clickedBB = false;
 
-    $( window ).resize(function() {
-
-    });
-
       var tag = document.createElement('script');
       tag.src = "https://www.youtube.com/iframe_api";
       var firstScriptTag = document.getElementsByTagName('script')[0];
       firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
         function onYouTubeIframeAPIReady() {
-        var controlsValue = 1; // 0 = no controls
+        var controlsValue = 0; // 0 = no controls
 
         var main_video_data = prepareVideo( "9fPl7yYqBts", onPlayerStateChange_m );
         var a_video_data = prepareVideo( "yOCxZRbwipE", onPlayerStateChange_a );
@@ -193,7 +189,7 @@ https://youtu.be/FcqhOOE3X8A
           var videoWidth;
 
           let video_data = {
-              height: 1280* 9/16,
+              height: 720,
               width: 1280,
               videoId: video_id,
               events: {
@@ -260,11 +256,6 @@ https://youtu.be/FcqhOOE3X8A
       }      
 
       function resize(event){
-        // $( window ).resize(function() {
-        //   video.setSize( $(window).width() , $(window).width()*(9/16) );
-        // });
-        // video.setSize( $(window).width() , $(window).width()*(9/16) );
-        
         let landscape = $(window).height() <= $(window).width();
         let videoWidth;
         let videoHeight;
