@@ -420,7 +420,6 @@ https://youtu.be/FcqhOOE3X8A
           hideContainer( window.containerA );
           showContainer( window.containerAA );
           aa_video.playVideo();
-          
         }
       }
 
@@ -435,14 +434,14 @@ https://youtu.be/FcqhOOE3X8A
           hideContainer( window.containerB );
           showContainer( window.containerBA );
           ba_video.playVideo();
-   
         }
       }
 
       function onPlayerStateChange_other () {
-        if (event.data == YT.PlayerState.PLAYING ) {
-          resize( event );
-        }
+        // if (event.data == YT.PlayerState.PLAYING ) {
+        //   resize( event );
+        // }
+        resize( event );
       }
 
 // function============================================
