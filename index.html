@@ -50,7 +50,7 @@ https://youtu.be/FcqhOOE3X8A
   }
 
   @media screen and (orientation: landscape) {
-    .btn-group {
+    .btn-group, .btn-group-one {
       display: flex;
       justify-content: center;
       align-items: center;		    
@@ -77,7 +77,18 @@ https://youtu.be/FcqhOOE3X8A
           top:0;
           top:50%;
           width:100%;   
-      }    
+    }    
+
+    .btn-group-one {
+          display: flex;
+          justify-content: space-around;
+          align-items: center;		      
+          position:absolute;
+          z-index: 99;
+          top:0;
+          top:70%;
+          width:100%;   
+    }
   }
 
 </style>
@@ -93,7 +104,7 @@ https://youtu.be/FcqhOOE3X8A
         <div id="MAIN"></div> 
       </div>
            
-      <div class="btn-group">
+      <div class="btn-group-one">
         <button OnClick="clickA()" class="hover:bg-red-400 bg-opacity-75  md:border-2 border-white rounded-xl  px-4 py-2 md:px-10 md:py-4 bg-gray-400 z-10 text-white md:font-bold md:text-xl transparent" id="btnA" style="display:none;">Project Atum</button>
         <button OnClick="clickB()" class="hover:bg-red-400 bg-opacity-75  md:border-2 border-white rounded-xl  px-4 py-2 md:px-10 md:py-4 bg-gray-400 z-10 text-white md:font-bold md:text-xl transparent" id="btnB" style="display:none;">Project Thoth</button>
       </div>
