@@ -38,6 +38,7 @@ BB
 https://youtu.be/FcqhOOE3X8A
  -->
 <style>
+
 	.box{
     position: relative;
 		display: flex;
@@ -80,48 +81,6 @@ https://youtu.be/FcqhOOE3X8A
     }
   }
 
-  /* @media screen and (orientation: landscape) {
-    .btn-group, .btn-group-one {
-      display: flex;
-      justify-content: center;
-      align-items: center;		    
-      z-index: 99;
-      position:absolute; 
-      top:0;
-      top:80%;
-      width:100%;
-    }
-  }
-
-  @media screen and (orientation: portrait) {
-    button {
-      border: 1px;
-      border-style: solid;
-    }
-
-    .btn-group {
-          display: flex;
-          justify-content: space-around;
-          align-items: center;		      
-          position:absolute;
-          z-index: 99;
-          top:0;
-          top:50%;
-          width:100%;   
-    }    
-
-    .btn-group-one {
-          display: flex;
-          justify-content: space-around;
-          align-items: center;		      
-          position:absolute;
-          z-index: 99;
-          top:0;
-          top:50%;
-          width:100%;   
-    }
-  } */
-
 </style>
 
 <body>
@@ -143,7 +102,6 @@ https://youtu.be/FcqhOOE3X8A
         class=" hover:bg-red-400 bg-opacity-75  md:border-2 border-white rounded-xl  
         px-4 py-2 md:px-10 md:py-4 bg-gray-400 z-10 text-white md:font-bold text-sm md:text-xl transparent" id="btnB" style="display:none;">Project Thoth</button>
       </div>
-
     </div>
 
 
@@ -217,7 +175,6 @@ https://youtu.be/FcqhOOE3X8A
     var clickedBB = false;
 
 
-
       var done = false;
 
       var tag = document.createElement('script');
@@ -226,9 +183,7 @@ https://youtu.be/FcqhOOE3X8A
       firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
       function onYouTubeIframeAPIReady() {
-        var controlsValue = 1; // 0 = no controls
-        // var landscape = $(window).height() <= $(window).width();
-        // var portrait = $(window).height() > $(window).width();
+        var controlsValue = 0; // 0 = no controls
 
         var main_video_data = renderVideo( "9fPl7yYqBts", onPlayerStateChange_m );
         var a_video_data = renderVideo( "yOCxZRbwipE", onPlayerStateChange_a );
@@ -239,9 +194,14 @@ https://youtu.be/FcqhOOE3X8A
         var bb_video_data = renderVideo( "FcqhOOE3X8A", onPlayerStateChange_other );
 
         function renderVideo( video_id, onStateChange ){
+          var videoWidth = 1440;
+          if ( $(window).width() < 1440 ){
+            videoWidth = $(window).width();
+          }
+
           let video_data = {
-              height: $(window).width()*(9/16),
-              width: $(window).width(),
+              height: videoWidth*(9/16),
+              width: videoWidth,
               videoId: video_id,
               events: {
                 'onReady': onPlayerReady,
@@ -262,96 +222,12 @@ https://youtu.be/FcqhOOE3X8A
         ab_video = new YT.Player('containerAB', ab_video_data);
         ba_video = new YT.Player('containerBA', ba_video_data);
         bb_video = new YT.Player('containerBB', bb_video_data);
-
-        // a_video = new YT.Player('containerA', {
-        //   height: $(window).height(),
-        //   width: $(window).width(),
-        //   videoId: "yOCxZRbwipE",
-        //   events: {
-        //     'onReady': onPlayerReady,
-        //     'onStateChange': onPlayerStateChange_a
-        //   },
-        //   playerVars: {
-        //      'playsinline': 1,
-        //      'controls': controlsValue,
-        //   }
-        // });
-
-        // b_video = new YT.Player('containerB', {
-        //   height: $(window).height(),
-        //   width: $(window).width(),
-        //   videoId: "g2qxPuPoV5c",
-        //   events: {
-        //     'onReady': onPlayerReady,
-        //     'onStateChange': onPlayerStateChange_b,
-        //   },
-        //   playerVars: {
-        //      'playsinline': 1,
-        //       'controls': controlsValue,
-        //   }
-        // });
-
-        // aa_video = new YT.Player('containerAA', {
-        //   height: $(window).height(),
-        //   width: $(window).width(),
-        //   videoId: "tnPscr4MZb4",
-        //   events: {
-        //     'onReady': onPlayerReady,
-        //     'onStateChange': onPlayerStateChange_other
-        //   },
-        //   playerVars: {
-        //      'playsinline': 1,
-        //      'controls': controlsValue,
-        //   }
-        // });
-
-        // ab_video = new YT.Player('containerAB', {
-        //   height: $(window).height(),
-        //   width: $(window).width(),
-        //   videoId: "zQa9lrEor1g",
-        //   events: {
-        //     'onReady': onPlayerReady,
-        //     'onStateChange': onPlayerStateChange_other
-        //   },
-        //   playerVars: {
-        //      'playsinline': 1,
-        //      'controls': controlsValue,
-        //   }
-        // });
-
-        // ba_video = new YT.Player('containerBA', {
-        //   height: $(window).height(),
-        //   width: $(window).width(),
-        //   videoId: "FghZx1o4ePE",
-        //   events: {
-        //     'onReady': onPlayerReady,
-        //     'onStateChange': onPlayerStateChange_other
-        //   },
-        //   playerVars: {
-        //      'playsinline': 1,
-        //      'controls': controlsValue,
-        //   }
-        // });
-
-        // bb_video = new YT.Player('containerBB', {
-        //   height: $(window).height(),
-        //   width: $(window).width(),
-        //   videoId: "FcqhOOE3X8A",
-        //   events: {
-        //     'onReady': onPlayerReady,
-        //     'onStateChange': onPlayerStateChange_other
-        //   },
-        //   playerVars: {
-        //      'playsinline': 1,
-        //      'controls': controlsValue,
-        //   }
-        // });
   
       }
 
 
       function onPlayerReady(event) {
-        // event.target.playVideo();
+        event.target.pauseVideo();
       }
 
       function startInterval( player, btn1, bnt2 ) {
@@ -387,17 +263,18 @@ https://youtu.be/FcqhOOE3X8A
         }, 1000)
       }      
 
-      function resize( e ){
-        $( window ).resize(function() {
-           e.target.setSize( $(window).width() , $(window).width()*(9/16) );
-        });
-      }
+      // function resize( e ){
+      //   $( window ).resize(function() {
+      //      e.target.setSize( $(window).width() , $(window).width()*(9/16) );
+      //   });
+      // }
 
 
 // onPlayerStateChange ============================================
       function onPlayerStateChange_m(event) {
         if (event.data == YT.PlayerState.PLAYING ) {
           startInterval( event.target, btnA, btnB );
+          console.log(66)
           // resize( event );
         }
 
@@ -413,7 +290,6 @@ https://youtu.be/FcqhOOE3X8A
       function onPlayerStateChange_a(event) {
         if (event.data == YT.PlayerState.PLAYING ) {
           startInterval2( event.target, btnAA, btnAB  );
-          // resize( event );
         }
 
         if (event.data == YT.PlayerState.ENDED) {
@@ -421,14 +297,12 @@ https://youtu.be/FcqhOOE3X8A
           hideContainer( window.containerA );
           showContainer( window.containerAA );
           aa_video.playVideo();
-          // resize( event );
         }
       }
 
       function onPlayerStateChange_b(event) {
         if (event.data == YT.PlayerState.PLAYING ) {
           startInterval3( event.target, btnBA, btnBB );
-          // resize( event );
         }
 
         if (event.data == YT.PlayerState.ENDED) {
@@ -436,16 +310,14 @@ https://youtu.be/FcqhOOE3X8A
           hideContainer( window.containerB );
           showContainer( window.containerBA );
           ba_video.playVideo();
-          // resize( event );
         }
-        resize( event );
+        
       }
 
-      function onPlayerStateChange_other () {
-        // if (event.data == YT.PlayerState.PLAYING ) {
-        //   resize( event );
-        // }
-        resize( event );
+      function onPlayerStateChange_other (event) {
+        if (event.data == YT.PlayerState.PLAYING ) {
+          // resize( event );
+        }
       }
 
 // function============================================
