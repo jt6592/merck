@@ -398,7 +398,7 @@ https://youtu.be/FcqhOOE3X8A
       function onPlayerStateChange_m(event) {
         if (event.data == YT.PlayerState.PLAYING ) {
           startInterval( event.target, btnA, btnB );
-          resize( event );
+          // resize( event );
         }
 
         if (event.data == YT.PlayerState.ENDED) {
@@ -406,13 +406,14 @@ https://youtu.be/FcqhOOE3X8A
           hideContainer( window.MAIN );
           showContainer( window.containerA );
           a_video.playVideo();
+          // resize( event );
         }
       }
 
       function onPlayerStateChange_a(event) {
         if (event.data == YT.PlayerState.PLAYING ) {
           startInterval2( event.target, btnAA, btnAB  );
-          resize( event );
+          // resize( event );
         }
 
         if (event.data == YT.PlayerState.ENDED) {
@@ -420,13 +421,14 @@ https://youtu.be/FcqhOOE3X8A
           hideContainer( window.containerA );
           showContainer( window.containerAA );
           aa_video.playVideo();
+          // resize( event );
         }
       }
 
       function onPlayerStateChange_b(event) {
         if (event.data == YT.PlayerState.PLAYING ) {
           startInterval3( event.target, btnBA, btnBB );
-          resize( event );
+          // resize( event );
         }
 
         if (event.data == YT.PlayerState.ENDED) {
@@ -434,7 +436,9 @@ https://youtu.be/FcqhOOE3X8A
           hideContainer( window.containerB );
           showContainer( window.containerBA );
           ba_video.playVideo();
+          // resize( event );
         }
+        resize( event );
       }
 
       function onPlayerStateChange_other () {
