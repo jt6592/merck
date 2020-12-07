@@ -1,0 +1,30 @@
+<!-- 
+MAIN 2038
+https://youtu.be/oaiQX-lfFPI
+
+A
+Project Atum
+https://youtu.be/e4rwB8pMbn8
+
+B
+Project Thoth
+https://youtu.be/BNN5xKzJ3LU
+
+AA
+智慧醫療<br>Smart Healthcare
+https://youtu.be/xpKDyCEoLic
+
+AB
+智慧運輸<br>Smart Mobility
+https://youtu.be/xN7numa61RM
+
+BA
+智慧育樂<br>Future Entertainment
+https://youtu.be/ISqbKDjVdkc
+
+BB
+智慧檢測<br>Smart Monitoring
+https://youtu.be/LpqRbSLd_DQ
+ -->
+
+//videoIds = ['oaiQX-lfFPI','e4rwB8pMbn8','BNN5xKzJ3LU','xpKDyCEoLic','xN7numa61RM','ISqbKDjVdkc','LpqRbSLd_DQ'];
