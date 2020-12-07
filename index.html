@@ -9,34 +9,6 @@
 </head>
 
 
-<!-- 
-MAIN
-https://youtu.be/9fPl7yYqBts
-
-A
-Project Atum
-https://youtu.be/yOCxZRbwipE
-
-B
-Project Thoth
-https://youtu.be/g2qxPuPoV5c
-
-AA
-智慧醫療<br>Smart Healthcare
-https://youtu.be/tnPscr4MZb4
-
-AB
-智慧運輸<br>Smart Mobility
-https://youtu.be/zQa9lrEor1g
-
-BA
-智慧育樂<br>Future Entertainment<br>Technology
-https://youtu.be/FghZx1o4ePE
-
-BB
-智慧檢測<br>Smart Monitoring<br>Technology
-https://youtu.be/FcqhOOE3X8A
- -->
 <style>
 
 	.box{
@@ -169,6 +141,9 @@ https://youtu.be/FcqhOOE3X8A
     var clickedBA = false;
     var clickedBB = false;
 
+	    var videoIds = ['oaiQX-lfFPI','e4rwB8pMbn8','BNN5xKzJ3LU','xpKDyCEoLic','xN7numa61RM','ISqbKDjVdkc','LpqRbSLd_DQ'];
+	    
+	    
       var tag = document.createElement('script');
       tag.src = "https://www.youtube.com/iframe_api";
       var firstScriptTag = document.getElementsByTagName('script')[0];
@@ -177,13 +152,13 @@ https://youtu.be/FcqhOOE3X8A
         function onYouTubeIframeAPIReady() {
         var controlsValue = 0; // 0 = no controls
 
-        var main_video_data = prepareVideo( "9fPl7yYqBts", onPlayerStateChange_m );
-        var a_video_data = prepareVideo( "yOCxZRbwipE", onPlayerStateChange_a );
-        var b_video_data = prepareVideo( "g2qxPuPoV5c", onPlayerStateChange_b );
-        var aa_video_data = prepareVideo( "tnPscr4MZb4", onPlayerStateChange_other );
-        var ab_video_data = prepareVideo( "zQa9lrEor1g", onPlayerStateChange_other );
-        var ba_video_data = prepareVideo( "FghZx1o4ePE", onPlayerStateChange_other );
-        var bb_video_data = prepareVideo( "FcqhOOE3X8A", onPlayerStateChange_other );
+        var main_video_data = prepareVideo( videoIds[0], onPlayerStateChange_m );
+        var a_video_data = prepareVideo( videoIds[1], onPlayerStateChange_a );
+        var b_video_data = prepareVideo( videoIds[2], onPlayerStateChange_b );
+        var aa_video_data = prepareVideo( videoIds[3], onPlayerStateChange_other );
+        var ab_video_data = prepareVideo( videoIds[4], onPlayerStateChange_other );
+        var ba_video_data = prepareVideo( videoIds[5], onPlayerStateChange_other );
+        var bb_video_data = prepareVideo( videoIds[6], onPlayerStateChange_other );
         
         function prepareVideo( video_id, onStateChange ){
           var videoWidth;
