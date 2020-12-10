@@ -152,16 +152,15 @@
         function onYouTubeIframeAPIReady() {
         var controlsValue = 0; // 0 = no controls
 
-
-        var main_video_data = prepareVideo( videoIds[0], onPlayerStateChange_m );
-        var a_video_data = prepareVideo( videoIds[1], onPlayerStateChange_a );
-        var b_video_data = prepareVideo( videoIds[2], onPlayerStateChange_b );
-        var aa_video_data = prepareVideo( videoIds[3], onPlayerStateChange_aa );
-        var ab_video_data = prepareVideo( videoIds[4], onPlayerStateChange_ab );
-        var ba_video_data = prepareVideo( videoIds[5], onPlayerStateChange_ba );
-        var bb_video_data = prepareVideo( videoIds[6], onPlayerStateChange_bb );
+        var main_video_data = prepareVideo( videoIds[0],onPlayerReady,  onPlayerStateChange_m );
+        var a_video_data = prepareVideo( videoIds[1],onPlayerReady, onPlayerStateChange_a );
+        var b_video_data = prepareVideo( videoIds[2],onPlayerReady,  onPlayerStateChange_b );
+        var aa_video_data = prepareVideo( videoIds[3],onPlayerReady,  onPlayerStateChange_aa );
+        var ab_video_data = prepareVideo( videoIds[4],onPlayerReady,  onPlayerStateChange_ab );
+        var ba_video_data = prepareVideo( videoIds[5],onPlayerReady,  onPlayerStateChange_ba );
+        var bb_video_data = prepareVideo( videoIds[6],onPlayerReady,  onPlayerStateChange_bb );
         
-        function prepareVideo( video_id, onStateChange ){
+        function prepareVideo( video_id, onPlayerReady, onStateChange ){
           var videoWidth;
 
           let video_data = {
@@ -192,61 +191,68 @@
         ba_video = new YT.Player('containerBA', ba_video_data);
         bb_video = new YT.Player('containerBB', bb_video_data);
   
+        startInterval_M( main_video,btnA, btnB  );
+        startInterval_A( a_video, btnAA, btnAB  );
+        startInterval_B( b_video,btnBA, btnBB  );
       }
 
-
-
+      function resetBtns(){
+        clickedA = false;
+        clickedB = false;
+        clickedAA = false;
+        clickedAB = false;
+        clickedBA = false;
+        clickedBB = false;
+      }
 
       function onPlayerReady(event) {
-        // event.target.pauseVideo();
         resize( event );
       }
 
-      function startInterval( player, btn1, bnt2 ) {
-        checkInt = setInterval(function() {
-          // console.log("startInterval")
+      function startInterval_M( player, btn1, bnt2 ) {
+        checkIntM = setInterval(function() {
+          // console.log("startInterval__1")
           // console.log(player.getCurrentTime())
-            if (player.getCurrentTime() >= player.getDuration()-12 && player.getCurrentTime() < player.getDuration()-1 && !clickedA && !clickedB) {
-              showBtn( btn1, bnt2 );
-              clearInterval(checkInt);
-            };
+          if (player.getCurrentTime() >= player.getDuration()-12 && player.getCurrentTime() < player.getDuration()-1 && !clickedA && !clickedB) {
+            showBtn( btn1, bnt2 );
+          }
+          else{
+            hideBtn( btn1, bnt2 );
+          }
         }, 1000)
       }
 
-      function startInterval2( player, btn1, bnt2 ) {
-        checkInt = setInterval(function() {
-          // console.log("startInterval2")
+      function startInterval_A( player, btn1, bnt2 ) {
+        checkIntA = setInterval(function() {
+          // console.log("startInterval__2")
           // console.log(player.getCurrentTime())
-            if (player.getCurrentTime() >= player.getDuration()-6 && player.getCurrentTime() < player.getDuration()-1 && !clickedAA && !clickedAB ) {
-              showBtn( btn1, bnt2 );
-              clearInterval(checkInt);
-            };
+          if (player.getCurrentTime() >= player.getDuration()-6 && player.getCurrentTime() < player.getDuration()-1 && !clickedAA && !clickedAB ) {
+            showBtn( btn1, bnt2 );
+          }
+          else{
+            hideBtn( btn1, bnt2 );
+          }
         }, 1000)
       }
 
-      function startInterval3( player, btn1, bnt2 ) {
-        checkInt = setInterval(function() {
-          // console.log("startInterval3")
+      function startInterval_B( player, btn1, bnt2 ) {
+        checkIntB = setInterval(function() {
+          // console.log("startInterval__3")
           // console.log(player.getCurrentTime())
-            if (player.getCurrentTime() >= player.getDuration()-7 && player.getCurrentTime() < player.getDuration()-1 && !clickedBA && !clickedBB) {
-              showBtn( btn1, bnt2 );
-              clearInterval(checkInt);
-            };
+          if (player.getCurrentTime() >= player.getDuration()-7 && player.getCurrentTime() < player.getDuration()-1 && !clickedBA && !clickedBB) {
+            showBtn( btn1, bnt2 );
+          }
+          else{
+            hideBtn( btn1, bnt2 );
+          }
         }, 1000)
-      }      
+      }
 
       function resize(event){
         let landscape = $(window).height() <= $(window).width();
         let videoWidth;
         let videoHeight;
-        //   if(landscape){
-        //     videoHeight = $(window).height();
-        //     videoWidth = $(window).width() *(16/9);
-        //   }
-        //   else{
-        //     videoWidth = $(window).width();
-        //     videoHeight = videoWidth*(9/16);
-        // }
+
         videoWidth = $(window).width();
         videoHeight = $(window).width()*(9/16);
         event.target.setSize( videoWidth , videoHeight );
@@ -255,7 +261,6 @@
 // onPlayerStateChange ============================================
       function onPlayerStateChange_m(event) {
         if (event.data == YT.PlayerState.PLAYING ) {
-          startInterval( event.target, btnA, btnB );
           resize( event );
         }
 
@@ -269,7 +274,6 @@
 
       function onPlayerStateChange_a(event) {
         if (event.data == YT.PlayerState.PLAYING ) {
-          startInterval2( event.target, btnAA, btnAB  );
           resize( event );
         }
 
@@ -283,7 +287,6 @@
 
       function onPlayerStateChange_b(event) {
         if (event.data == YT.PlayerState.PLAYING ) {
-          startInterval3( event.target, btnBA, btnBB );
           resize( event  );
         }
 
@@ -304,6 +307,7 @@
             showContainer( window.MAIN );
             main_video.playVideo();
             main_video.pauseVideo();
+            resetBtns()
           }
       }
 
@@ -316,6 +320,7 @@
             showContainer( window.MAIN );
             main_video.playVideo();
             main_video.pauseVideo();
+            resetBtns()
           }
       }
 
@@ -328,6 +333,7 @@
             showContainer( window.MAIN );
             main_video.playVideo();
             main_video.pauseVideo();
+            resetBtns()
           }
       }
 
@@ -340,13 +346,14 @@
             showContainer( window.MAIN );
             main_video.playVideo();
             main_video.pauseVideo();
+            resetBtns()
           }
       }
 
 // function============================================
       function showBtn(btn1, btn2) {
-		btn1.style.display = "block";
-		btn2.style.display = "block";
+        btn1.style.display = "block";
+        btn2.style.display = "block";
       }
       function hideBtn(btn1, btn2) {
         btn1.style.display = "none";
@@ -363,7 +370,6 @@
       function clickA(){
           hideBtn( btnA, btnB );
           main_video.stopVideo();
-          main_video.setInterval   
           hideContainer( window.MAIN );
           showContainer( window.containerA );
           a_video.playVideo();
@@ -372,7 +378,7 @@
       }
       function clickB(){
           hideBtn( btnA, btnB );
-          main_video.stopVideo();  
+          main_video.stopVideo();
           hideContainer( window.MAIN );
           showContainer( window.containerB );
           b_video.playVideo();
@@ -390,7 +396,7 @@
       }
       function clickAB(){
           hideBtn( btnAA, btnAB );
-          a_video.stopVideo();  
+          a_video.stopVideo();
           hideContainer( window.containerA );
           showContainer( window.containerAB );
           ab_video.playVideo();
@@ -399,7 +405,7 @@
       }
       function clickBA(){
           hideBtn( btnBA, btnBB );
-          b_video.stopVideo();    
+          b_video.stopVideo();
           hideContainer( window.containerB );
           showContainer( window.containerBA );
           ba_video.playVideo();
